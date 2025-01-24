@@ -23,7 +23,7 @@
     margin-top: 100px;
     margin-bottom: 50px;
     font-size: 5vw;
-    
+
   }
 
   .subtitle {
@@ -82,13 +82,7 @@
   box-sizing: border-box;
 }
 
-
-
-
-
 body {
-  
-  background-color: #e6f7ff; /* Light blue background */
   background-image: url('elements/Bus_black_background.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -115,6 +109,11 @@ body .title{
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  position: sticky;
+  top: 0; /* Ensures the header sticks to the top */
+  background-color: rgb(0, 0, 0,0); /* Optional: To ensure the header is visible if it overlaps content */
+  z-index: 1000; /* Ensures the header is above other elements */
+
 }
 
 .logo img {
@@ -139,7 +138,6 @@ body .title{
 .navbar a:hover{
   color: #ee0101;
 }
-
 
 
 /* Main Content */
@@ -182,5 +180,76 @@ body .title{
 .icon 
 {
   font-size: 25px;
+  padding: 20px;
 }
 
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 50px;
+  padding-left: 50px;
+}
+
+.content h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  margin-top: 150px;
+}
+
+.content h1 {
+  font-size: 70px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  margin-top: 80px;
+}
+
+.bottomlog {
+  font-size: 16px;
+  padding: 20px 20px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 100px;
+}
+
+.bottomlog:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+footer {
+  background-color: rgb(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+}
+
+footer a {
+  color: #6f6f6f;
+  text-decoration: none;
+  padding-left: 10px;
+  font-size: 10px;
+}
+
+footer a:hover {
+  color: #ee0101
+}
