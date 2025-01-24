@@ -1,0 +1,113 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    background-size: contain; /* Show the entire image without cropping */
+    background-position: top; /* Adjust the position */
+  }
+}
+
+
+body {
+  
+  background-color: #e6f7ff; /* Light blue background */
+  background-image: url('elements/Bus_black_background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #ffffff;
+  background-attachment: fixed; /* Make the background image static */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+body .title{
+  font-family: 'Verdana';
+  font-weight: bolder;
+  font-size: 110px;
+  margin-bottom: 150px;
+}
+
+.subtitle{
+  font-family: 'verdana';
+  font-weight: lighter;
+}
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+  
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a:hover{
+  color: #ee0101;
+}
+
+
+
+/* Main Content */
+.main-content {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 150px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  margin-top: 50px;
+}
+
+.login-btn {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 800;
+  
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.login-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.icon 
+{
+  font-size: 25px;
+}
+
