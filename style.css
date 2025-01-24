@@ -1,4 +1,79 @@
+/* Responsive Styles */
 
+/* For tablets and smaller devices (up to 768px) */
+@media (max-width: 768px) {
+  body {
+    background-size: contain; /* Show the entire image without cropping */
+    background-position: top; /* Adjust the position */
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  .login-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* For mobile devices (up to 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+  }
+
+  .logo img {
+    width: 50px;
+  }
+
+  .navbar ul {
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    padding: 0 10px;
+  }
+
+  .login-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}
+
+/*STYLES START HERE*/
 * {
   margin: 0;
   padding: 0;
@@ -6,12 +81,7 @@
 }
 
 
-@media (max-width: 768px) {
-  body {
-    background-size: contain; /* Show the entire image without cropping */
-    background-position: top; /* Adjust the position */
-  }
-}
+
 
 
 body {
@@ -25,6 +95,7 @@ body {
   background-attachment: fixed; /* Make the background image static */
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
 body .title{
   font-family: 'Verdana';
   font-weight: bolder;
