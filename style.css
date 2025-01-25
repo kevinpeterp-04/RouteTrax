@@ -150,6 +150,7 @@ body .title{
 .navbar a {
   text-decoration: none;
   color: #ffffff;
+  font-size: 15px;
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -157,7 +158,6 @@ body .title{
 .navbar a:hover{
   color: #ee0101;
 }
-
 
 /* Main Content */
 .main-content {
@@ -198,7 +198,7 @@ body .title{
   background-color: rgba(255, 255, 255, 0.2);
   color : #000000;
   animation: myblur 0s;
-  animation: myround 0.5s ;
+  animation: myround 2s;
   animation-fill-mode: forwards;
 }
 
@@ -256,7 +256,7 @@ body .title{
   background-color: rgba(255, 255, 255, 0.2);
   color : #000000;
   animation: myblur 0.01s;
-  animation: myround 0.5s ;
+  animation: myround 2s ;
   animation-fill-mode: forwards;
 }
 
