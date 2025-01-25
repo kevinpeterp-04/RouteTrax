@@ -90,13 +90,25 @@ body {
   color: #ffffff;
   background-attachment: fixed; /* Make the background image static */
   overflow-x: hidden; /* Prevent horizontal scrolling */
+  animation: fadein 4s;
+}
+
+@keyframes fadein{
+  from {background-image: url('elements/blackbg.jpg');}
+  to {background-image: url('elements/Bus_black_background.png');}
 }
 
 body .title{
   font-family: 'Verdana';
   font-weight: bolder;
-  font-size: 110px;
+  font-size: 120px;
   margin-bottom: 150px;
+  animation: mymove 1.5s ;
+}
+
+@keyframes mymove{
+  from {font-size: 110px; filter: blur(5px); }
+  to {font-size: 120px; filter: blur(0px); } 
 }
 
 .subtitle{
@@ -108,12 +120,13 @@ body .title{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
   position: sticky;
   top: 0; /* Ensures the header sticks to the top */
   background-color: rgb(0, 0, 0,0); /* Optional: To ensure the header is visible if it overlaps content */
   z-index: 1000; /* Ensures the header is above other elements */
-
+  backdrop-filter: blur(5px);
+  box-shadow: 3px 3px 5px rgba( 0, 0, 0, 0.02);
 }
 
 .logo img {
@@ -121,6 +134,7 @@ body .title{
   height: auto;
   
 }
+
 
 .navbar ul {
   list-style: none;
@@ -173,8 +187,9 @@ body .title{
 }
 
 .login-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: rgba(255, 255, 255, 0.2);
+  color : #000000;
+  backdrop-filter: blur(5px);
 }
 
 .icon 
@@ -226,8 +241,9 @@ body .title{
 }
 
 .bottomlog:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: rgba(255, 255, 255, 0.2);
+  color : #000000;
+  backdrop-filter: blur(5px);
 }
 
 footer {
@@ -241,6 +257,7 @@ footer {
   width: 100%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 13px;
+  backdrop-filter: blur(5px);
 }
 
 footer a {
