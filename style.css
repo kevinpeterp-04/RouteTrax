@@ -90,7 +90,7 @@ body {
   color: #ffffff;
   background-attachment: fixed; /* Make the background image static */
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  animation: fadein 4s;
+  animation: fadein 5s;
 }
 
 @keyframes fadein{
@@ -103,14 +103,19 @@ body .title{
   font-weight: bolder;
   font-size: 120px;
   margin-bottom: 150px;
-  animation: mymove 1.5s ;
+  animation: mymove 3s ;
+  
 }
 
 @keyframes mymove{
-  from {font-size: 110px; filter: blur(5px); }
-  to {font-size: 120px; filter: blur(0px); } 
+  from {font-size: 110px;  }
+  to {font-size: 120px;  } 
 }
 
+@keyframes myblur{
+  from {filter: blur(5px); }
+  to {filter: blur(0px); } 
+}
 .subtitle{
   font-family: 'verdana';
   font-weight: lighter;
@@ -165,6 +170,8 @@ body .title{
   font-weight: 700;
   margin-bottom: 20px;
   margin-top: 150px;
+  text-shadow: 0px 0px 20px #000000;
+  
 }
 
 .subtitle {
@@ -172,6 +179,7 @@ body .title{
   margin-bottom: 30px;
   line-height: 1.5;
   margin-top: 50px;
+  text-shadow: 0px 0px 20px #000000;
 }
 
 .login-btn {
@@ -181,7 +189,7 @@ body .title{
   padding: 15px 30px;
   font-size: 1rem;
   font-weight: 800;
-  
+  box-shadow: 0px 0px 15px#000000;
   cursor: pointer;
   margin-top: 5px;
 }
@@ -189,7 +197,9 @@ body .title{
 .login-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color : #000000;
-  backdrop-filter: blur(5px);
+  animation: myblur 0s;
+  animation: myround 0.5s ;
+  animation-fill-mode: forwards;
 }
 
 .icon 
@@ -206,6 +216,7 @@ body .title{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 50px;
   padding-left: 50px;
+  text-shadow: 0px 0px 20px #000000;
 }
 
 .content h2 {
@@ -238,12 +249,20 @@ body .title{
   cursor: pointer;
   font-weight: bold;
   margin-bottom: 100px;
+  box-shadow: 0px 0px 15px#000000;
 }
 
 .bottomlog:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color : #000000;
-  backdrop-filter: blur(5px);
+  animation: myblur 0.01s;
+  animation: myround 0.5s ;
+  animation-fill-mode: forwards;
+}
+
+@keyframes myround{
+  from{border-radius: 0px; backdrop-filter: blur(0px);}
+  to{border-radius: 50px; backdrop-filter: blur(5px);}
 }
 
 footer {
@@ -251,7 +270,7 @@ footer {
   color: #fff;
   text-align: center;
   padding-top: 15px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   position: relative;
   bottom: 0;
   width: 100%;
