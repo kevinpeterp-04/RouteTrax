@@ -120,7 +120,7 @@ body .title{
   font-family: 'verdana';
   font-weight: lighter;
 }
-/* Header */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -137,9 +137,7 @@ body .title{
 .logo img {
   width: 60px;
   height: auto;
-  
 }
-
 
 .navbar ul {
   list-style: none;
@@ -171,7 +169,6 @@ body .title{
   margin-bottom: 20px;
   margin-top: 150px;
   text-shadow: 0px 0px 20px #000000;
-  
 }
 
 .subtitle {
@@ -207,8 +204,20 @@ body .title{
 {
   font-size: 25px;
   padding: 20px;
+  color: #fff;
 }
 
+a:visited {
+  text-decoration: none; 
+}
+
+a {
+  text-decoration: none; 
+}
+
+.icon:hover{
+  color:#ee0101;
+}
 
 .content {
   position: relative;
