@@ -17,7 +17,7 @@
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .title {
     font-size: clamp(20px, 8vw, 120px); /* Dynamically scales font size between 20px and 120px */
     margin-top: clamp(50px, 10vh, 150px); /* Adjusts top margin dynamically */
@@ -85,7 +85,7 @@
 }
 
 body {
-  background-image: url('elements/Bus_black_background.png');
+  background-image: url('elements/redbus.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
