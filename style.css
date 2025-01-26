@@ -97,7 +97,7 @@ body {
 
 @keyframes fadein{
   from {background-image: url('elements/blackbg.jpg');}
-  to {background-image: url('elements/Bus_black_background.png');}
+  to {background-image: url('elements/redbus.jpg');}
 }
 
 body .title{
