@@ -17,13 +17,13 @@
     flex-direction: column;
     gap: 15px;
   }
-
+  
   .title {
-    font-size: 2.5rem;
-    margin-top: 100px;
-    margin-bottom: 50px;
-    font-size: 5vw;
-
+    font-size: clamp(20px, 8vw, 120px); /* Dynamically scales font size between 20px and 120px */
+    margin-top: clamp(50px, 10vh, 150px); /* Adjusts top margin dynamically */
+    margin-bottom: clamp(30px, 5vh, 100px); /* Adjusts bottom margin dynamically */
+    text-align: center; /* Ensures proper alignment for responsiveness */
+    word-wrap: break-word; /* Prevents overflow of text */
   }
 
   .subtitle {
@@ -54,9 +54,11 @@
   }
 
   .title {
-    font-size: 2rem;
-    margin-top: 80px;
-    margin-bottom: 40px;
+    font-size: clamp(20px, 8vw, 120px); /* Dynamically scales font size between 20px and 120px */
+    margin-top: clamp(50px, 10vh, 150px); /* Adjusts top margin dynamically */
+    margin-bottom: clamp(30px, 5vh, 100px); /* Adjusts bottom margin dynamically */
+    text-align: center; /* Ensures proper alignment for responsiveness */
+    word-wrap: break-word; /* Prevents overflow of text */
   }
 
   .subtitle {
@@ -89,7 +91,7 @@ body {
   background-size: cover;
   color: #ffffff;
   background-attachment: fixed; /* Make the background image static */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+   /* Prevent horizontal scrolling */
   animation: fadein 5s;
 }
 
@@ -103,14 +105,10 @@ body .title{
   font-weight: bolder;
   font-size: 120px;
   margin-bottom: 150px;
-  animation: mymove 3s ;
+
   
 }
 
-@keyframes mymove{
-  from {font-size: 110px;  }
-  to {font-size: 120px;  } 
-}
 
 @keyframes myblur{
   from {filter: blur(5px); }
@@ -196,7 +194,7 @@ body .title{
   background-color: rgba(255, 255, 255, 0.2);
   color : #000000;
   animation: myblur 0s;
-  animation: myround 2s;
+  animation: myround 1s;
   animation-fill-mode: forwards;
 }
 
@@ -267,7 +265,7 @@ a {
   background-color: rgba(255, 255, 255, 0.2);
   color : #000000;
   animation: myblur 0.01s;
-  animation: myround 2s ;
+  animation: myround 1s ;
   animation-fill-mode: forwards;
 }
 
@@ -299,4 +297,58 @@ footer a {
 
 footer a:hover {
   color: #ee0101
+}
+
+/* Sidebar container */
+.sidebar {
+  height: 100vh; /* Full viewport height */
+  width: 300px; /* Sidebar width */
+  position: fixed; /* Fixed positioning on the left */
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.922); 
+  display: none;
+  flex-direction: column;
+  padding-top: 20px;
+  color: #fff;
+  z-index: 1000; /* Ensures the sidebar is on top of other content */
+  box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+  
+}
+
+/* Sidebar links */
+.sidebar .sidebar-link {
+  display: block;
+  padding: 15px 20px; /* Add padding to links */
+  color: #fff;
+  text-decoration: none; /* Remove underline */
+  font-size: 18px;
+  text-align: left; /* Align text to the left */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect for sidebar links */
+.sidebar .sidebar-link:hover {
+  background-color: rgb(12, 12, 12); /* Change background on hover */
+   color: #ee0101;/* Change text color on hover */
+  }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px; /* Reduce width on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 150px; /* Reduce width on mobile */
+  }
+}
+
+@media (max-width: 800px){
+  .hideOnMobile{
+    display: none;
+  }
+
 }
