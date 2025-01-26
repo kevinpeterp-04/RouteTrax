@@ -100,14 +100,19 @@ body {
   to {background-image: url('elements/redbus60.png');}
 }
 
+@keyframes mmove{
+  from {font-size: 110px;  }
+  to {font-size: 120px;  } 
+}
+
 body .title{
   font-family: 'Verdana';
   font-weight: bolder;
   font-size: 120px;
   margin-bottom: 150px;
-
-  
+  animation: mmove 2s;
 }
+
 
 
 @keyframes myblur{
