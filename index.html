@@ -13,16 +13,27 @@
     <div class="logo">
       <a href="index.html"><img src="elements/Routetrax_white_png.png" alt="Logo"></a>
     </div>
+    <div class="hideOnMobile"> 
     <nav class="navbar">
       <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">NOTIFICATIONS</a></li>
-        <li><a href="#">MAP</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li ><a href="#">HOME</a></li>
+        <li ><a href="#">NOTIFICATIONS</a></li>
+        <li ><a href="#">MAP</a></li>
+        <li ><a href="#">CONTACT</a></li>
       </ul>
     </nav>
+  </div>
+    <div class="sidebar">
+      <a href="#side" class="sidebar-link" onclick=hideSB()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+      <a href="#home" class="sidebar-link">Home</a>
+      <a href="#notifications" class="sidebar-link">Notifications</a>
+      <a href="#map" class="sidebar-link">Map</a>
+      <a href="#contact" class="sidebar-link">Contact</a>
+    </div>
+
+    
     <div class="menu">
-      <a href="#"><span class="icon">☰</span></a>
+      <a href="#" onclick=showSB()><span class="icon">☰</span></a>
     </div>
   </header>
 
@@ -56,6 +67,20 @@
   </p>
 <!-- add profile and nav bar 3 stripes for responsive design-->
 </footer>
+
+
+
+<script>
+  function showSB(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'flex'
+  }
+
+  function hideSB(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'none'
+  }
+</script>
 </body>
 </html>
 
