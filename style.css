@@ -85,7 +85,7 @@
 }
 
 body {
-  background-image: url('elements/redbus.jpg');
+  background-image: url('elements/redbus60.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -97,7 +97,7 @@ body {
 
 @keyframes fadein{
   from {background-image: url('elements/blackbg.jpg');}
-  to {background-image: url('elements/redbus.jpg');}
+  to {background-image: url('elements/redbus60.png');}
 }
 
 body .title{
@@ -215,6 +215,7 @@ a {
 
 .icon:hover{
   color:#ee0101;
+  cursor: pointer;
 }
 
 .content {
