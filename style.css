@@ -90,7 +90,8 @@ body {
   background-position: center;
   background-size: cover;
   color: #ffffff;
-  background-attachment: fixed; /* Make the background image static */
+  background-attachment: fixed;
+  overflow-x: hidden;  /* Make the background image static */
    /* Prevent horizontal scrolling */
   animation: fadein 5s;
 }

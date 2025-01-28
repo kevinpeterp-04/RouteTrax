@@ -4,30 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROUTETRAX</title>
-    <link rel="stylesheet" href="..\static\stylelogin.css" />
+    <link rel="stylesheet" href="loginstyle.css" />
   </head>
   <body>
     <header class="header">
       <div class="logo">
-        <img src="..\static\Routetrax_white_png.png" alt="Logo" />
+        <a href="index.html"><img src="elements/Routetrax_white_png.png" alt="Logo" /></a>
       </div>
       <nav class="navbar">
         <ul>
-          <li><a href="#">HOME</a></li>
+          <li><a href="index.html">HOME</a></li>
           <li><a href="#">NOTIFICATIONS</a></li>
           <li><a href="#">MAP</a></li>
           <li><a href="#">CONTACT</a></li>
         </ul>
       </nav>
-      <div class="menu">
-        <span class="icon">☰</span>
-      </div>
-    </header>
+
+    </div>
+    <div class="sidebar">
+      <a class="sidebar-link" onclick=hideSB()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+      <a href="#home" class="sidebar-link">Home</a>
+      <a href="#notifications" class="sidebar-link">Notifications</a>
+      <a href="#map" class="sidebar-link">Map</a>
+      <a href="#contact" class="sidebar-link">Contact</a>
+    </div>
+
+    
+    <div class="menu">
+      <a onclick=showSB()><span class="icon">☰</span></a>
+    </div>
+  </header>
 
     <main class="main-contentlogin">
       <div class="login-container">
         <div class="login-form">
-          <h2>LOG IN</h2>
+          <h2><strong>LOG IN</strong></h2>
           <form>
             <label for="email">Email</label>
             <input
@@ -46,15 +57,15 @@
             <button type="submit">Log In</button>
           </form>
           <div class="login-options">
-            <a href="#">Sign in with GOOGLE</a>
-            <a href="#">Sign in with MICROSOFT</a>
+            <a href="#">Sign in with <strong>GOOGLE</strong></a>
+            <a href="#">Sign in with<strong> MICROSOFT</strong></a>
           </div>
           <div class="signup">
             <p>Don't have an account? <a href="#">Signup</a></p>
           </div>
         </div>
         <div class="login-image">
-          <img src="..\static\Routetrax_white_png.png" alt="Logo" />
+          <img src="elements/Routetrax_white_png.png" alt="Logo" />
         </div>
       </div>
     </main>
@@ -66,5 +77,19 @@
         <a href="#" target="_blank">PRIVACY POLICY</a>
       </p>
     </footer>
+
+    
+<script>
+    function showSB(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+  
+    function hideSB(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+  </script>
+
   </body>
 </html>
