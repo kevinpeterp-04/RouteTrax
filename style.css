@@ -278,7 +278,7 @@ a {
 
 @keyframes myround{
   from{border-radius: 5px; backdrop-filter: blur(0px);}
-  to{border-radius: 50px; backdrop-filter: blur(5px);}
+  to{border-radius: 20px; backdrop-filter: blur(5px);}
 }
 
 footer {
