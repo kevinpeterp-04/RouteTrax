@@ -1,0 +1,146 @@
+/* Reset default margin & padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set full height for proper splitting */
+html, body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4e7c5;
+    color: #4d1f2b;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+/* Header section takes 50% height */
+.contact-header {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #f4e7c5;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.help-link {
+    color: #4d1f2b;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Contact section fills exactly the bottom 50% */
+.contact-section {
+    height: 80vh;
+    background-color: #4d1f2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: slideUp 0.8s ease-out 0.3s forwards;
+}
+
+/* Contact container with evenly spaced boxes */
+.contact-container {
+    display: flex;
+    gap: 60px; /* Space between boxes */
+}
+
+/* Individual contact box */
+.contact-box {
+    background: #f4e7c5;
+    padding: 30px;
+    border-radius: 12px;
+    width: 250px;
+    height: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0;
+    transform: translateY(20px) scale(1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Apply animations to contact boxes with different delays */
+.contact-box:nth-child(1) {
+    animation: fadeInUp 0.6s ease-out 0.6s forwards;
+}
+
+.contact-box:nth-child(2) {
+    animation: fadeInUp 0.6s ease-out 0.8s forwards;
+}
+
+.contact-box:nth-child(3) {
+    animation: fadeInUp 0.6s ease-out 1s forwards;
+}
+
+/* Hover effect */
+.contact-box:hover {
+    background: #e0d0b0;
+    cursor: pointer;
+}
+
+/* SVG Icon Styling */
+.contact-icon svg {
+    display: block;
+    margin: 0 auto;
+    fill: #4d1f2b;
+    width: 100px;
+    height: 100px;
+}
+
+.contact-icon {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keeps text at the bottom */
+.contact-box h3 {
+    margin-top: auto;
+    padding-bottom: 10px;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(1);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
