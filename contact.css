@@ -23,7 +23,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 15px;
     background-color: #f4e7c5;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
@@ -87,9 +87,11 @@ html, body {
 
 /* Hover effect */
 .contact-box:hover {
-    background: #e0d0b0;
+    background: #dec68b;
     cursor: pointer;
 }
+
+
 
 /* SVG Icon Styling */
 .contact-icon svg {
