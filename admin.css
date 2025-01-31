@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.center-wrapper {
+    display: flex;            /* Use flexbox to center the content */
+    justify-content: center;  /* Horizontally center the button container */
+    align-items: center;      /* Vertically center the button container */
+    height: 100vh;            /* Full viewport height */
+}
+
+.button-container {
+    display: flex;           /* Align buttons horizontally */
+    justify-content: center; /* Spread buttons evenly within container */
+    gap: 50px;               /* Adds space between the buttons */
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 23px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.heading{
+    display: flex;
+    
+}
