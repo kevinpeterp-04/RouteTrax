@@ -116,10 +116,6 @@ body .title{
 
 
 
-@keyframes myblur{
-  from {filter: blur(5px); }
-  to {filter: blur(0px); } 
-}
 .subtitle{
   font-family: 'verdana';
   font-weight: lighter;
@@ -131,11 +127,14 @@ body .title{
   align-items: center;
   padding: 15px;
   position: sticky;
-  top: 0; /* Ensures the header sticks to the top */
+  top: 20px; /* Ensures the header sticks to the top */
   background-color: rgb(0, 0, 0,0); /* Optional: To ensure the header is visible if it overlaps content */
   z-index: 1000; /* Ensures the header is above other elements */
   backdrop-filter: blur(5px);
   box-shadow: 3px 3px 5px rgba( 0, 0, 0, 0.02);
+  margin: 20px;
+  border: 0.1px solid rgba(255, 255, 255, 0.027);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .logo img {
@@ -173,6 +172,7 @@ body .title{
   margin-bottom: 20px;
   margin-top: 150px;
   text-shadow: 0px 0px 20px #000000;
+  mix-blend-mode: overlay;
 }
 
 .subtitle {
@@ -202,6 +202,12 @@ body .title{
   animation: myblur 0s;
   animation: myround 1s;
   animation-fill-mode: forwards;
+}
+
+
+@keyframes myblur{
+  from {mix-blend-mode: normal;}
+  to {mix-blend-mode: overlay;} 
 }
 
 .icon 
@@ -277,8 +283,8 @@ a {
 }
 
 @keyframes myround{
-  from{border-radius: 5px; backdrop-filter: blur(0px);}
-  to{border-radius: 20px; backdrop-filter: blur(5px);}
+  from{border-radius: 5px;}
+  to{border-radius: 20px;}
 }
 
 footer {

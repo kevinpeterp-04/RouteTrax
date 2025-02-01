@@ -1,7 +1,21 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #000000;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 200px;
+}
+
+.heading h1{
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 }
 
 .center-wrapper {
@@ -19,9 +33,9 @@ body {
 
 .btn {
     padding: 10px 20px;
-    font-size: 23px;
-    background-color: #007bff;
-    color: white;
+    font-size: 21px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -29,10 +43,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    color: #ee0101;
+    background-color: #000000;
 }
 
-.heading{
-    display: flex;
-    
-}

@@ -49,7 +49,7 @@
 
 <div class="hero">
   <div class="content">
-    <h2>ABOUT</h2>
+    
     <h1>WELCOME TO ROUTETRAX</h1>
     <p>
       Worried about missing the college bus on a Monday morning? Say no more to those problems! 
@@ -83,6 +83,25 @@
     const sidebar = document.querySelector('.sidebar')
     sidebar.style.display = 'none'
   }
+
+ // Get the navbar element
+ let navbar = document.querySelector(".header");
+
+// Store the original background color
+let originalColor = navbar.style.backgroundColor;
+
+// Function to change color on mouse over
+navbar.addEventListener("mouseover", function() {
+    navbar.style.backgroundColor = "rgb(0, 0, 0,0.75)";  // Change to black
+     // Change text color for better visibility
+});
+
+// Function to revert color on mouse out
+navbar.addEventListener("mouseout", function() {
+    navbar.style.backgroundColor = originalColor;  // Restore original color
+    
+});
+
 </script>
 </body>
 </html>
