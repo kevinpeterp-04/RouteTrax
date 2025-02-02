@@ -54,7 +54,8 @@
               placeholder="Enter your password"
               required
             />
-            <button type="submit">Log In</button>
+            <button type="submit">Log In As Parent</button>
+            <button type="submit">Log In As Admin</button>
           </form>
           <div class="login-options">
             <a href="#">Sign in with <strong>GOOGLE</strong></a>
@@ -89,6 +90,26 @@
       const sidebar = document.querySelector('.sidebar')
       sidebar.style.display = 'none'
     }
+
+    
+ // Get the navbar element
+ let navbar = document.querySelector(".header");
+
+// Store the original background color
+let originalColor = navbar.style.backgroundColor;
+
+// Function to change color on mouse over
+navbar.addEventListener("mouseover", function() {
+    navbar.style.backgroundColor = "rgb(0, 0, 0,0.75)";  // Change to black
+     // Change text color for better visibility
+});
+
+// Function to revert color on mouse out
+navbar.addEventListener("mouseout", function() {
+    navbar.style.backgroundColor = originalColor;  // Restore original color
+    
+});
+
   </script>
 
   </body>
