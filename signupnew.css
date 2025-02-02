@@ -53,6 +53,7 @@ h1 {
     bottom: 20px;
     font-size: 3.5rem;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .red{
@@ -62,6 +63,7 @@ h1 {
 .signup-text {
     font-size: 1rem;
     margin-bottom: 20px;
+    margin-left: 5px;
 }
 
 .signup-text a {
@@ -85,6 +87,7 @@ input {
     width: 100%;
     padding: 12px;
     margin-top: 5px;
+    margin-bottom: 5px;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -92,43 +95,6 @@ input {
     color: #000000;
 }
 
-/* Divider */
-.divider {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    color: #dddddd;
-}
-
-.divider hr {
-    flex: 1;
-    border: none;
-    height: 1px;
-    background: #dddddd;
-}
-
-.divider span {
-    margin: 0 10px;
-    
-}
-
-/* Social Buttons */
-.social-btn {
-    background: #dddddd;
-    color: black;
-    padding: 12px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.social-btn:hover {
-    background-color: #000000;
-    color: #dddddd;
-}
 
 /* Bottom Buttons */
 .button-group {
@@ -162,4 +128,21 @@ input {
     background: #ee0101;
     color:#ee0101;
     
+}
+
+.inputgroupcontainer {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.inputgroupcontainer .input-group1{
+    width: 73%;
+    margin-bottom: 5px;
+}
+
+.inputgroupcontainer2 {
+    display: flex;
+    gap: 20px;
+    width: 100%;
 }

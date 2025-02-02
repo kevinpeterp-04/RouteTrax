@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="signupnew.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <div class="login-container">
+        <h1>Create a new account<span class="red">.</span></h1>
+        <p class="signup-text">Already a member? <a href="login2.html">Log in</a></p>
+
+        <form action="#">
+            <div class="inputgroupcontainer">
+            <div class="input-group1">
+                <label>Enter First Name</label>
+                <input type="text" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Last Name</label>
+                <input type="text" required>
+            </div>
+            </div>
+            <div class="inputgroupcontainer2">
+                <div class="input-group">
+                    <label>Enter Department</label>
+                    <input type="text" required>
+                </div>
+                <div class="input-group">
+                    <label>Enter Semester & Division</label>
+                    <input type="text" required>
+                </div>
+                </div>
+
+                <label for="phone">Enter Phone number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            
+            <label for="email">Enter Email (RSET Email)</label>
+            <input type="email" id="email">
+
+            <label for="password">Enter Password</label>
+            <input type="password" id="password">
+
+            <div class="button-group">
+                <button type="button" class="small-btn" onclick="window.location.href='index.html'">Go Back</button>
+                <button class="small-btn confirm">Confirm</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
