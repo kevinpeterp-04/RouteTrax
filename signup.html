@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup</title>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
 </head>
 <body>
-    hello
+    <div class="container">
+        <h1>Create new account.</h1>
+        <p class="login-link">Already A Member? <a href="#">Log in</a></p>
+        <form id="signupForm">
+            <div class="input-group">
+                <label>Enter First Name</label>
+                <input type="text" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Last Name</label>
+                <input type="text" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Department</label>
+                <input type="text" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Semester & Division</label>
+                <input type="text" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Phone Number</label>
+                <input type="tel" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Email (RSET Email)</label>
+                <input type="email" required>
+            </div>
+            <div class="input-group">
+                <label>Enter Password</label>
+                <input type="password" required>
+            </div>
+            <div class="button-group">
+                <button type="button" class="back">Go Back</button>
+                <button type="submit" class="confirm">Confirm</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
