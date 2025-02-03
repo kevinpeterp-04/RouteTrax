@@ -198,8 +198,8 @@ body .title{
 }
 
 .login-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color : #000000;
+  background-color: rgba(255, 255, 255, 0);
+  color : #ffffff;
   animation: myblur 0s;
   animation: myround 1s;
   animation-fill-mode: forwards;
@@ -208,7 +208,7 @@ body .title{
 
 @keyframes myblur{
   from {mix-blend-mode: normal;}
-  to {mix-blend-mode: overlay;} 
+  to {mix-blend-mode: difference;} 
 }
 
 .icon 
@@ -277,7 +277,7 @@ a {
 
 .bottomlog:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  color : #000000;
+  color : #ffffff;
   animation: myblur 0.01s;
   animation: myround 1s ;
   animation-fill-mode: forwards;

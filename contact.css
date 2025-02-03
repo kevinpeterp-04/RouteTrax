@@ -9,129 +9,13 @@
 html, body {
     height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #f4e7c5;
-    color: #4d1f2b;
+    color: #ffffff;
     text-align: center;
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    position: sticky;
-    top: 15px; /* Ensures the header sticks to the top */
-    background-color: rgb(0, 0, 0,0); /* Optional: To ensure the header is visible if it overlaps content */
-    z-index: 1000; /* Ensures the header is above other elements */
-    backdrop-filter: blur(5px);
-    box-shadow: 3px 3px 5px rgba( 0, 0, 0, 0.02);
-    margin: 15px;
-    border-radius: 10px;
-    border: 0.1px solid rgba(255, 255, 255, 0.027);
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .logo img {
-    width: 60px;
-    height: auto;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .navbar a:hover{
-    color: #ee0101;
-  }
-
-  .icon 
-{
-  font-size: 25px;
-  padding: 20px;
-  color: #fff;
-}
-
-a:visited {
-  text-decoration: none; 
-}
-
-a {
-  text-decoration: none; 
-}
-
-.icon:hover{
-  color:#ee0101;
-  cursor: pointer;
-}
-
-
-/* Sidebar container */
-.sidebar {
-    height: 100vh; /* Full viewport height */
-    width: 300px; /* Sidebar width */
-    position: fixed; /* Fixed positioning on the left */
-    top: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.922); 
-    display: none;
-    flex-direction: column;
-    padding-top: 20px;
-    color: #fff;
-    z-index: 1000; /* Ensures the sidebar is on top of other content */
-    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
-    
-  }
-  
-  /* Sidebar links */
-  .sidebar .sidebar-link {
-    display: block;
-    padding: 15px 20px; /* Add padding to links */
-    color: #fff;
-    text-decoration: none; /* Remove underline */
-    font-size: 18px;
-    text-align: left; /* Align text to the left */
-    transition: background-color 0.3s; /* Smooth transition */
-  }
-  
-  /* Hover effect for sidebar links */
-  .sidebar .sidebar-link:hover {
-    background-color: rgb(12, 12, 12); /* Change background on hover */
-     color: #ee0101;/* Change text color on hover */
-    }
-  
-  /* Responsive styles for smaller screens */
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 250px; /* Reduce width on tablets */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .sidebar {
-      width: 150px; /* Reduce width on mobile */
-    }
-  }
-  
-  @media (max-width: 800px){
-    .hideOnMobile{
-      display: none;
-    }
-  
-  }
-  
 /* Header section takes 50% height */
 .contact-header {
     height: 50vh;
@@ -139,13 +23,13 @@ a {
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    background-color: #f4e7c5;
+    background-color: #000000;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
 }
 
 .help-link {
-    color: #4d1f2b;
+    color: #ee0101;
     text-decoration: underline;
     font-weight: bold;
 }
@@ -153,12 +37,30 @@ a {
 /* Contact section fills exactly the bottom 50% */
 .contact-section {
     height: 80vh;
-    background-color: #4d1f2b;
+    background-image: url(elements/contact_bg.jpg);
+    background-position: 0px -450px;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     animation: slideUp 0.8s ease-out 0.3s forwards;
+}
+.contact-section::before {
+  content: ''; /* This creates the overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Black overlay with 50% opacity */
+  z-index: 1; /* Make sure the overlay sits above the image */
+}
+
+.contact-section > * {
+  position: relative;
+  z-index: 2; /* Ensure the content stays above the overlay */
 }
 
 /* Contact container with evenly spaced boxes */
@@ -169,7 +71,7 @@ a {
 
 /* Individual contact box */
 .contact-box {
-    background: #f4e7c5;
+    background: #000000;
     padding: 30px;
     border-radius: 12px;
     width: 250px;
@@ -201,18 +103,21 @@ a {
 }
 
 /* Hover effect */
-.contact-box:hover {
-    background: #dec68b;
-    cursor: pointer;
+.contact-box:hover{
+  cursor: pointer;
 }
 
+.contact-box:hover .contact-icon svg {
+  fill: #ee0101;
+cursor: pointer;
+}
 
 
 /* SVG Icon Styling */
 .contact-icon svg {
     display: block;
     margin: 0 auto;
-    fill: #4d1f2b;
+    fill: #ffffff;
     width: 100px;
     height: 100px;
 }
@@ -260,4 +165,58 @@ a {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+
+/* Popup container hidden by default */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Popup content box */
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+/* Styling for popup info (customize as needed) */
+.popup-info h2 {
+  margin-bottom: 10px;
+}
+
+.popup-info{
+  color: #000000;
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+  position: absolute; /* Keep logo in place while scrolling */
+  top: 30px; /* Distance from the top */
+  left: 30px;
 }
