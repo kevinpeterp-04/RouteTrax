@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Manager</title>
+    <link rel="stylesheet" href="notif.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Notification Center</h1>
+        </header>
+
+        <div class="filters">
+            <button id="showAll" class="filter-btn active">All</button>
+            <button id="showFavorites" class="filter-btn">Favorites</button>
+            <button id="showReminders" class="filter-btn">Reminders</button>
+        </div>
+
+        <div id="notifications" class="notifications-container">
+            <!-- Notifications will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Template for notification -->
+    <template id="notification-template">
+        <div class="notification-card">
+            <div class="notification-header">
+                <h3 class="notification-title"></h3>
+                <span class="notification-date"></span>
+            </div>
+            <p class="notification-message"></p>
+            <div class="notification-actions">
+                <button class="action-btn favorite-btn">
+                    <span class="star-icon">☆</span>
+                </button>
+                <button class="action-btn reminder-btn">
+                    Set Reminder
+                </button>
+                <div class="reminder-input hidden">
+                    <input type="datetime-local" class="datetime-picker">
+                    <button class="save-reminder-btn">Save</button>
+                    <button class="cancel-reminder-btn">Cancel</button>
+                </div>
+                <span class="reminder-text hidden"></span>
+                <button class="action-btn remove-reminder-btn hidden">
+                    Remove Reminder
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <script src="notif.js" type="module"></script>
+</body>
+</html>
