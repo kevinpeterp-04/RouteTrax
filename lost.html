@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Bus Lost & Found</title>
+    <link rel="stylesheet" href="lost.css">
+</head>
+<body>
+    <div class="container">
+        <h1>College Bus Lost & Found</h1>
+        <form id="reportForm">
+            <div class="form-group">
+                <label for="itemType">Report Type:</label>
+                <select id="itemType" required>
+                    <option value="lost">Lost Item</option>
+                    <option value="found">Found Item</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="itemName">Item Description:</label>
+                <input type="text" id="itemName" required placeholder="e.g., Airpods">
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="busRoute">Bus Route Number:</label>
+                <input type="text" id="busRoute" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactName">Your Name:</label>
+                <input type="text" id="contactName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Email:</label>
+                <input type="email" id="contactEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactPhone">Phone:</label>
+                <input type="tel" id="contactPhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalInfo">Additional Information:</label>
+                <textarea id="additionalInfo" rows="3"></textarea>
+            </div>
+
+            <button type="submit">Submit Report</button>
+        </form>
+
+        <div id="reports" class="reports-section">
+            <h2>Recent Reports</h2>
+            <div id="reportsList"></div>
+        </div>
+    </div>
+    <script src="lost.js"></script>
+</body>
+</html>
