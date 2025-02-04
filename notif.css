@@ -1,0 +1,175 @@
+/* Base styles */
+:root {
+    --primary-color: #ee0101;
+    --secondary-color: #000000;
+    --text-color: #2d3436;
+    --border-color: #dfe6e9;
+    --favorite-color: #f1c40f;
+    --danger-color: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f0f0f0
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Notification Card */
+.notification-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.notification-card:hover {
+    transform: translateY(-2px);
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.notification-title {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.notification-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.notification-message {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Actions */
+.notification-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.reminder-btn{
+    background-color: #000000;
+    color: white;
+}
+
+.reminder-btn:hover{
+    background-color: #333333;
+}
+
+
+.favorite-btn .star-icon {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.favorite-btn.active .star-icon {
+    color: var(--favorite-color);
+}
+
+.reminder-input {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.datetime-picker {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.save-reminder-btn,
+.cancel-reminder-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-reminder-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cancel-reminder-btn {
+    background-color: rgb(233, 233, 233);
+}
+
+.reminder-text {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.remove-reminder-btn {
+    color: var(--danger-color);
+}
+
+.hidden {
+    display: none;
+}

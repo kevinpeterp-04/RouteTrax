@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Notification Panel</title>
+    <link rel="stylesheet" href="notifadmin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Notification Panel</h1>
+        <div class="notification-form">
+            <textarea 
+                id="notificationMessage" 
+                placeholder="Enter notification message..."
+                rows="4"
+            ></textarea>
+            <button id="publishBtn">Publish Notification</button>
+        </div>
+        <div class="notification-history">
+            <h2>Recent Notifications</h2>
+            <ul id="notificationList"></ul>
+        </div>
+    </div>
+    <script type="module" src="notifadmin.js"></script>
+</body>
+</html>
