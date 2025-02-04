@@ -4,19 +4,19 @@ const mockNotifications = [
         id: 1,
         title: "Delay",
         message: "Buses may be delayed by a few minutes due to heavy traffic along the route.",
-        date: "2024-03-20T14:00:00",
+        date: "2025-02-03T14:00:00",
     },
     {
         id: 2,
         title: "Early Departure",
         message: "The buses will leave the college at 3:45 PM.",
-        date: "2024-03-19T15:00:00",
+        date: "2025-02-02T15:00:00",
     },
     {
         id: 3,
-        title: "Security Update",
-        message: "Important security patches have been applied to your account.",
-        date: "2024-03-18T16:45:00",
+        title: "Fee payment",
+        message: "Bus fees should be paid before 2/7/2025.",
+        date: "2025-02-01T16:45:00",
     }
 ];
 
