@@ -69,7 +69,7 @@ button {
 }
 
 button:hover {
-    background-color: #cf0000;
+    background-color: #ee0101;
     transform: translateY(-1px);
 }
 
