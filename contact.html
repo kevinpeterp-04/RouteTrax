@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="contact.css">
 </head>
 <body> 
@@ -26,8 +27,7 @@
                 <button class="close-btn" id="closePopup">Close</button>
                 <div class="popup-info">
                     <!-- Popup content goes here -->
-                    <h2>LOL</h2>
-                    <p>Details about the contact...</p>
+                    
                 </div>
             </div>
         </div>
@@ -71,10 +71,40 @@ function showPopup(content) {
     const popupInfo = document.querySelector('.popup-info');
     popupInfo.innerHTML = content;
     popupContainer.style.display = 'flex';
+    
 }
 
+const socialMediaHTML = `
+        <div class="social-media-card">
+            <h2>Follow Us on Social Media</h2>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/c/yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/school/yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://twitter.com/yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.snapchat.com/add/yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </a>
+                <a href="https://www.tiktok.com/@yourcollege" class="social-icon" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    `;
+
 contact1.addEventListener('click', () => {
-    showPopup('<h2>Contact 1 Info</h2><p>Details about Contact 1...</p>');
+    showPopup(socialMediaHTML);
 });
 
 contact2.addEventListener('click', () => {
