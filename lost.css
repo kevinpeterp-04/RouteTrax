@@ -5,27 +5,49 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #121212; /* Dark background */
+    color: #E0E0E0; /* Light text */
     padding: 20px;
 }
 
+/* Back Button Styling */
+.back-button {
+    background-color: #b50000; /* Light red button */
+    color: #ffffff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #810000; /* Darker red on hover */
+}
+
+/* Container Styling */
 .container {
     max-width: 900px;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 60px; /* Increased top margin to make space for the back button */
     margin-bottom: 30px;
-    background-color: white;
-    padding: 20px;
+    background-color: #1E1E1E; /* Slightly lighter dark background */
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Softer shadow for depth */
 }
 
 h1 {
+    color: #b50000;
+    font-size: 50px;
     text-align: center;
-    color: #333;
-    margin-bottom: 30px;
+    text-shadow: 0px 0px 20px #000000;
 }
 
 .form-group {
@@ -35,35 +57,44 @@ h1 {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #E0E0E0; /* Light text for labels */
     font-weight: bold;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #333; /* Subtle border color */
+    border-radius: 5px;
     font-size: 16px;
+    background-color: #2C2C2C; /* Slightly lighter dark for inputs */
+    color: #E0E0E0; /* Light text inside inputs */
 }
 
 textarea {
     resize: vertical;
 }
 
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #b50000; /* Light purple focus */
+    box-shadow: 0 0 5px #b50000; /* Light purple glow */
+}
+
 button {
-    background-color: #ee0101;
-    color: white;
-    padding: 10px 20px;
+    background-color: #b50000; /* Light red button */
+    color: #ffffff;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     width: 100%;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #de0000;
+    background-color: #810000; /* Dark red on hover */
 }
 
 .reports-section {
@@ -71,32 +102,34 @@ button:hover {
 }
 
 .reports-section h2 {
-    color: #333;
+    color: #ffffff; /* Light color for section heading */
     margin-bottom: 20px;
+    font-size: 1.5rem;
 }
 
 .report-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
+    background-color: #1F1B24; /* Darker card background */
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
     margin-bottom: 15px;
 }
 
 .report-card h3 {
-    color: #333;
+    color: #c50000; /* Light purple for report title */
     margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 .report-card p {
     margin: 5px 0;
-    color: #666;
+    color: #E0E0E0; /* Light gray text */
 }
 
 .report-type-lost {
-    border-left: 4px solid #ff4444;
+    border-left: 4px solid #FF4081; /* Pink for lost reports */
 }
 
 .report-type-found {
-    border-left: 4px solid #4CAF50;
+    border-left: 4px solid #4CAF50; /* Green for found reports */
 }

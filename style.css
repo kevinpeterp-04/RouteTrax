@@ -90,6 +90,7 @@ body {
   background-position: center;
   background-size: cover;
   color: #ffffff;
+  font-family: 'Roboto', sans-serif;
   background-attachment: fixed;
   overflow-x: hidden;  /* Make the background image static */
    /* Prevent horizontal scrolling */
@@ -289,6 +290,7 @@ a {
 }
 
 footer {
+  bottom: 0;
   background-color: rgb(0, 0, 0, 0.5);
   color: #fff;
   text-align: center;
@@ -366,3 +368,14 @@ footer a:hover {
   }
 
 }
+
+#map {
+  height: 500px; /* Adjust height */
+  width: 80%; /* Full width */
+  border-radius: 10px; /* Optional styling */
+  margin-left: 10%;
+  margin-right: 10%;
+  
+  box-shadow: 10px 10px 30px black;
+}
+
