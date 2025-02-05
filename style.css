@@ -19,9 +19,17 @@
   }
 
   .title {
-    font-size: clamp(20px, 8vw, 120px); /* Dynamically scales font size between 20px and 120px */
+    font-size: clamp(
+      20px,
+      8vw,
+      120px
+    ); /* Dynamically scales font size between 20px and 120px */
     margin-top: clamp(50px, 10vh, 150px); /* Adjusts top margin dynamically */
-    margin-bottom: clamp(30px, 5vh, 100px); /* Adjusts bottom margin dynamically */
+    margin-bottom: clamp(
+      30px,
+      5vh,
+      100px
+    ); /* Adjusts bottom margin dynamically */
     text-align: center; /* Ensures proper alignment for responsiveness */
     word-wrap: break-word; /* Prevents overflow of text */
   }
@@ -54,9 +62,17 @@
   }
 
   .title {
-    font-size: clamp(20px, 8vw, 120px); /* Dynamically scales font size between 20px and 120px */
+    font-size: clamp(
+      20px,
+      8vw,
+      120px
+    ); /* Dynamically scales font size between 20px and 120px */
     margin-top: clamp(50px, 10vh, 150px); /* Adjusts top margin dynamically */
-    margin-bottom: clamp(30px, 5vh, 100px); /* Adjusts bottom margin dynamically */
+    margin-bottom: clamp(
+      30px,
+      5vh,
+      100px
+    ); /* Adjusts bottom margin dynamically */
     text-align: center; /* Ensures proper alignment for responsiveness */
     word-wrap: break-word; /* Prevents overflow of text */
   }
@@ -85,39 +101,45 @@
 }
 
 body {
-  background-image: url('elements/redbus60.png');
+  background-image: url("elements/redbus60.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   color: #ffffff;
   background-attachment: fixed;
-  overflow-x: hidden;  /* Make the background image static */
-   /* Prevent horizontal scrolling */
+  overflow-x: hidden; /* Make the background image static */
+  /* Prevent horizontal scrolling */
   animation: fadein 5s;
 }
 
-@keyframes fadein{
-  from {background-image: url('elements/blackbg.jpg');}
-  to {background-image: url('elements/redbus60.png');}
+@keyframes fadein {
+  from {
+    background-image: url("elements/blackbg.jpg");
+  }
+  to {
+    background-image: url("elements/redbus60.png");
+  }
 }
 
-@keyframes mmove{
-  from {font-size: 110px;  }
-  to {font-size: 120px;  } 
+@keyframes mmove {
+  from {
+    font-size: 110px;
+  }
+  to {
+    font-size: 120px;
+  }
 }
 
-body .title{
-  font-family: 'Verdana';
+body .title {
+  font-family: "Verdana";
   font-weight: bolder;
   font-size: 120px;
   margin-bottom: 150px;
   animation: mmove 2s;
 }
 
-
-
-.subtitle{
-  font-family: 'verdana';
+.subtitle {
+  font-family: "verdana";
   font-weight: lighter;
 }
 
@@ -128,10 +150,15 @@ body .title{
   padding: 15px;
   position: sticky;
   top: 15px; /* Ensures the header sticks to the top */
-  background-color: rgb(0, 0, 0,0); /* Optional: To ensure the header is visible if it overlaps content */
+  background-color: rgb(
+    0,
+    0,
+    0,
+    0
+  ); /* Optional: To ensure the header is visible if it overlaps content */
   z-index: 1000; /* Ensures the header is above other elements */
   backdrop-filter: blur(5px);
-  box-shadow: 3px 3px 5px rgba( 0, 0, 0, 0.02);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.02);
   margin: 15px;
   border-radius: 10px;
   border: 0.1px solid rgba(255, 255, 255, 0.027);
@@ -157,7 +184,7 @@ body .title{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar a:hover{
+.navbar a:hover {
   color: #ee0101;
 }
 
@@ -199,35 +226,37 @@ body .title{
 
 .login-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  color : #000000;
+  color: #000000;
   animation: myblur 0s;
   animation: myround 1s;
   animation-fill-mode: forwards;
 }
 
-
-@keyframes myblur{
-  from {mix-blend-mode: normal;}
-  to {mix-blend-mode: overlay;} 
+@keyframes myblur {
+  from {
+    mix-blend-mode: normal;
+  }
+  to {
+    mix-blend-mode: overlay;
+  }
 }
 
-.icon 
-{
+.icon {
   font-size: 25px;
   padding: 20px;
   color: #fff;
 }
 
 a:visited {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
-.icon:hover{
-  color:#ee0101;
+.icon:hover {
+  color: #ee0101;
   cursor: pointer;
 }
 
@@ -277,15 +306,19 @@ a {
 
 .bottomlog:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  color : #000000;
+  color: #000000;
   animation: myblur 0.01s;
-  animation: myround 1s ;
+  animation: myround 1s;
   animation-fill-mode: forwards;
 }
 
-@keyframes myround{
-  from{border-radius: 5px;}
-  to{border-radius: 20px;}
+@keyframes myround {
+  from {
+    border-radius: 5px;
+  }
+  to {
+    border-radius: 20px;
+  }
 }
 
 footer {
@@ -310,7 +343,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #ee0101
+  color: #ee0101;
 }
 
 /* Sidebar container */
@@ -320,14 +353,13 @@ footer a:hover {
   position: fixed; /* Fixed positioning on the left */
   top: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.922); 
+  background-color: rgba(0, 0, 0, 0.922);
   display: none;
   flex-direction: column;
   padding-top: 20px;
   color: #fff;
   z-index: 1000; /* Ensures the sidebar is on top of other content */
   box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
-  
 }
 
 /* Sidebar links */
@@ -344,8 +376,8 @@ footer a:hover {
 /* Hover effect for sidebar links */
 .sidebar .sidebar-link:hover {
   background-color: rgb(12, 12, 12); /* Change background on hover */
-   color: #ee0101;/* Change text color on hover */
-  }
+  color: #ee0101; /* Change text color on hover */
+}
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
@@ -360,9 +392,13 @@ footer a:hover {
   }
 }
 
-@media (max-width: 800px){
-  .hideOnMobile{
+@media (max-width: 800px) {
+  .hideOnMobile {
     display: none;
   }
-
+}
+#map {
+  height: 400px; /* Adjust height */
+  width: 100%; /* Full width */
+  border-radius: 10px; /* Optional styling */
 }
