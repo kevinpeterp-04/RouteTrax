@@ -1,4 +1,3 @@
-<!--THIS PAGE IS BEFORE LOGIN-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,8 @@
   <title>ROUTETRAX</title>
   <link rel="stylesheet" href="home.css">
   
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
@@ -15,26 +15,25 @@
       <a href="index.html"><img src="elements/Routetrax_white_png.png" alt="Logo"></a>
     </div>
     <div class="hideOnMobile"> 
-    <nav class="navbar">
-      <ul>
-        <li ><a href="index.html">HOME</a></li>
-        <li ><a href="notif.html">NOTIFICATIONS</a></li>
-        <li ><a href="login2.html">MAP</a></li>
-        <li ><a href="contact.html">CONTACT</a></li>
-      </ul>
-    </nav>
-  </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="notif.html">NOTIFICATIONS</a></li>
+          <li><a href="login2.html">MAP</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
     <div class="sidebar">
-      <a class="sidebar-link" onclick=hideSB()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+      <a class="sidebar-link" onclick="hideSB()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
       <a href="index.html" class="sidebar-link">Home</a>
       <a href="notif.html" class="sidebar-link">Notifications</a>
       <a href="login2.html" class="sidebar-link">Map</a>
       <a href="contact.html" class="sidebar-link">Contact</a>
     </div>
-
     
     <div class="menu">
-      <a onclick=showSB()><span class="icon">☰</span></a>
+      <a onclick="showSB()"><span class="icon">☰</span></a>
     </div>
   </header>
 
@@ -43,69 +42,90 @@
     
     <p class="subtitle">Track your college bus in real-time with ease – ensuring safety, <br> reliability, and convenience for your daily commute.</p>
     <div class="home-butn">
-    <button type="button" onclick="window.location.href='#';"  class="login-btn">View Map</button>
-    <button type="button" onclick="window.location.href='notif.html';"  class="login-btn">Notice</button>
-  </div>
+      <button type="button" onclick="window.location.href='map.html';" class="login-btn">View Map</button>
+      <button type="button" onclick="window.location.href='notif.html';" class="login-btn">Notice</button>
+    </div>
   </main>
-<br><br>
 
-<div class="hero">
-  <div class="content">
-    
-    <h1>WELCOME TO ROUTETRAX</h1>
-    <p>
-      Worried about missing the college bus on a Monday morning? Say no more to those problems! 
-      With RouteTrax, you can track the real-time location of your ward's bus, ensuring you never miss it again. 
-      Stay updated with live notifications, estimated arrival times, and alerts for unexpected delays. 
-      RouteTrax makes commuting stress-free and reliable for students and parents alike!
+  <section class="features-section">
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>Lost & Found</h3>
+        <p>Report or search for lost items on your bus route. Quick and easy item recovery system.</p>
+        <button onclick="window.location.href='lost.html';" class="feature-btn">Search Items</button>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <h3>Complaints</h3>
+        <p>Submit and track complaints about bus services. We value your feedback.</p>
+        <button onclick="scrollToSection('complaints')" class="feature-btn">Register Complaint</button>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <h3>Profile</h3>
+        <p>Manage your profile, generate digital bus pass, and track your journey history.</p>
+        <button onclick="scrollToSection('profile')" class="feature-btn">View Profile</button>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h3>Contact Us</h3>
+        <p>Got any questions? You may find the answers in our help centre.</p>
+        <button onclick="window.location.href='contact.html';" class="feature-btn">Contact Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <h2>Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 College Street, City, State</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <span>+1 234 567 890</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>support@routetrax.com</span>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Quick Contact</h3>
+          <form id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 RouteTrax. All Rights Reserved
+      <a href="#">TERMS AND CONDITIONS</a>
+      <a href="#">PRIVACY POLICY</a>
     </p>
-    
-    <button type="button" onclick="window.location.href='login2.html';" class="bottomlog">GO TO LOG IN PAGE</button>
+  </footer>
 
-  </div>
-</div>
-
-<footer>
-  <p>&copy; 2025 RouteTrax. All Rights Reserved
-    <a href="#">TERMS AND CONDITIONS</a>
-    <a href="#">PRIVACY POLICY</a>
-  </p>
-
-</footer>
-
-
-
-<script>
-  function showSB(){
-    const sidebar = document.querySelector('.sidebar')
-    sidebar.style.display = 'flex'
-  }
-
-  function hideSB(){
-    const sidebar = document.querySelector('.sidebar')
-    sidebar.style.display = 'none'
-  }
-
- // Get the navbar element
- let navbar = document.querySelector(".header");
-
-// Store the original background color
-let originalColor = navbar.style.backgroundColor;
-
-// Function to change color on mouse over
-navbar.addEventListener("mouseover", function() {
-    navbar.style.backgroundColor = "rgb(0, 0, 0,0.75)";  // Change to black
-     // Change text color for better visibility
-});
-
-// Function to revert color on mouse out
-navbar.addEventListener("mouseout", function() {
-    navbar.style.backgroundColor = originalColor;  // Restore original color
-    
-});
-
-</script>
+  <script src="home.js"></script>
 </body>
 </html>
-
-
