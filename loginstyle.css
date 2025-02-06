@@ -1,0 +1,430 @@
+/* Responsive Styles */
+
+/* For tablets and smaller devices (up to 768px) */
+@media (max-width: 768px) {
+    body {
+      background-size: contain; /* Show the entire image without cropping */
+      background-position: top; /* Adjust the position */
+    }
+  
+    .header {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+  
+    .navbar ul {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .title {
+      font-size: 2.5rem;
+      margin-top: 100px;
+      margin-bottom: 50px;
+      font-size: 5vw;
+    }
+  
+    .subtitle {
+      font-size: 1rem;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+  
+    .login-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* For mobile devices (up to 480px) */
+  @media (max-width: 480px) {
+    .header {
+      padding: 10px;
+    }
+  
+    .logo img {
+      width: 50px;
+    }
+  
+    .navbar ul {
+      gap: 10px;
+    }
+  
+    .title {
+      font-size: 2rem;
+      margin-top: 80px;
+      margin-bottom: 40px;
+    }
+  
+    .subtitle {
+      font-size: 0.9rem;
+      margin-top: 15px;
+      padding: 0 10px;
+    }
+  
+    .login-btn {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+    }
+  
+    .icon {
+      font-size: 20px;
+    }
+  }
+  
+  /*STYLES START HERE*/
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: url("elements/redbus60.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    background-attachment: fixed; /* Make the background image static */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    animation: fadein 5s;
+  }
+  
+  @keyframes fadein{
+    from {background-image: url('elements/blackbg.jpg');}
+    to {background-image: url('elements/redbus60.png');}
+  }
+
+  body .title {
+    font-family: "Verdana";
+    font-weight: bolder;
+    font-size: 110px;
+    margin-bottom: 150px;
+  }
+  
+  .subtitle {
+    font-family: "verdana";
+    font-weight: lighter;
+  }
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: sticky;
+    top: 15px; /* Ensures the header sticks to the top */
+    background-color: rgb(0, 0, 0,0); /* Optional: To ensure the header is visible if it overlaps content */
+    z-index: 1000; /* Ensures the header is above other elements */
+    backdrop-filter: blur(5px);
+    box-shadow: 3px 3px 5px rgba( 0, 0, 0, 0.02);
+   margin: 15px;
+   border-radius: 10px;
+    border: 0.1px solid rgba(255, 255, 255, 0.027);
+    transition: background-color 0.3s ease-in-out;
+  }
+  .logo img {
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .navbar a:hover {
+    color: #ee0101;
+  }
+  
+  /* Main Content */
+  .main-content {
+    text-align: center;
+    margin-top: 100px;
+  }
+  .main-contentlogin {
+    text-align: center;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 150px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    margin-top: 50px;
+  }
+  
+  .login-btn {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 800;
+  
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  
+  .login-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .icon {
+    font-size: 25px;
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 60px;
+    padding-left: 50px;
+  }
+  
+  .content h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    margin-top: 150px;
+  }
+  
+  .content h1 {
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  .content p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    margin-top: 80px;
+  }
+  
+  .bottomlog {
+    font-size: 16px;
+    padding: 20px 20px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 100px;
+  }
+  
+  .bottomlog:hover {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  footer {
+    background-color: rgb(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    margin-top: 160px;
+  }
+  
+  footer a {
+    color: #6f6f6f;
+    text-decoration: none;
+    padding-left: 10px;
+    font-size: 10px;
+  }
+  
+  footer a:hover {
+    color: #ee0101;
+  }
+  
+/* Sidebar container */
+.sidebar {
+    height: 100vh; /* Full viewport height */
+    width: 300px; /* Sidebar width */
+    position: fixed; /* Fixed positioning on the left */
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.922); 
+    display: none;
+    flex-direction: column;
+    padding-top: 20px;
+    color: #fff;
+    z-index: 1000; /* Ensures the sidebar is on top of other content */
+    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+    cursor: pointer;
+  }
+  
+  /* Sidebar links */
+  .sidebar .sidebar-link {
+    display: block;
+    padding: 15px 20px; /* Add padding to links */
+    color: #fff;
+    text-decoration: none; /* Remove underline */
+    font-size: 18px;
+    text-align: left; /* Align text to the left */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  /* Hover effect for sidebar links */
+  .sidebar .sidebar-link:hover {
+    background-color: rgb(12, 12, 12); /* Change background on hover */
+     color: #ee0101;/* Change text color on hover */
+    }
+  
+  /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 250px; /* Reduce width on tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sidebar {
+      width: 150px; /* Reduce width on mobile */
+    }
+  }
+  
+  @media (max-width: 800px){
+    .hideOnMobile{
+      display: none;
+    }
+  
+  }
+
+  .login-container {
+    display: flex;
+    width: 60%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  
+
+  .login-form {
+    text-align: justify;
+    color: black;
+    flex: 1;
+    padding: 50px;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #000000;
+  }
+  
+  .login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    ;
+  }
+  
+  .login-form button:hover {
+    background-color: #1c1c1c;
+  }
+  
+  .login-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .login-options a {
+    text-align: center;
+    padding: 10px;
+    flex: 1;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+  }
+  
+  .login-options a:hover {
+    background-color: #1c1c1c;
+  }
+  
+  .signup {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+
+  }
+  
+  .signup a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .login-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+  }
+  
+  .login-image img {
+    max-width: 60%;
+    max-height: 60%;
+  }
+  

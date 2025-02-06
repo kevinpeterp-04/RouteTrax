@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROUTETRAX</title>
+    <link rel="stylesheet" href="loginstyle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html"><img src="elements/Routetrax_white_png.png" alt="Logo" /></a>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="#">NOTIFICATIONS</a></li>
+          <li><a href="#">MAP</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+
+    </div>
+    <div class="sidebar">
+      <a class="sidebar-link" onclick=hideSB()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+      <a href="index.html" class="sidebar-link">Home</a>
+      <a href="#notifications" class="sidebar-link">Notifications</a>
+      <a href="#map" class="sidebar-link">Map</a>
+      <a href="contact.html" class="sidebar-link">Contact</a>
+    </div>
+
+    
+    <div class="menu">
+      <a onclick=showSB()><span class="icon">☰</span></a>
+    </div>
+  </header>
+
+    <main class="main-contentlogin">
+      <div class="login-container">
+        <div class="login-form">
+          <h2><strong>LOG IN</strong></h2>
+          <form>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+            <button type="submit">Log In As Parent</button>
+            <button type="submit">Log In As Admin</button>
+          </form>
+          <div class="login-options">
+            <a href="#">Sign in with <strong>GOOGLE</strong></a>
+            <a href="#">Sign in with<strong> MICROSOFT</strong></a>
+          </div>
+          <div class="signup">
+            <p>Don't have an account? <a href="#">Signup</a></p>
+          </div>
+        </div>
+        <div class="login-image">
+          <img src="elements/Routetrax_white_png.png" alt="Logo" />
+        </div>
+      </div>
+    </main>
+
+    <footer id="login_footer">
+      <p>&copy; 2025 RouteTrax. All Rights Reserved.</p>
+      <p>
+        <a href="#" target="_blank">TERMS AND CONDITIONS</a>
+        <a href="#" target="_blank">PRIVACY POLICY</a>
+      </p>
+    </footer>
+
+    
+<script>
+    function showSB(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+  
+    function hideSB(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+
+    
+ // Get the navbar element
+ let navbar = document.querySelector(".header");
+
+// Store the original background color
+let originalColor = navbar.style.backgroundColor;
+
+// Function to change color on mouse over
+navbar.addEventListener("mouseover", function() {
+    navbar.style.backgroundColor = "rgb(0, 0, 0,0.75)";  // Change to black
+     // Change text color for better visibility
+});
+
+// Function to revert color on mouse out
+navbar.addEventListener("mouseout", function() {
+    navbar.style.backgroundColor = originalColor;  // Restore original color
+    
+});
+
+  </script>
+
+  </body>
+</html>
