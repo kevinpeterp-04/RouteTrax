@@ -1,0 +1,165 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* Background Styling */
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: linear-gradient(to right, black,rgba(0, 0, 0, 0.445),rgba(255, 255, 255, 0)),url(elements/redbus60.png);;
+    font-family: 'Roboto', sans-serif;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 5%;
+    color: #dddddd;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+
+/* Login Container */
+.login-container {
+    position: relative;
+    will-change: transform, opacity;
+    width: 400px;
+    color: #dddddd;
+    animation: moving .7s ease-out forwards;
+    
+}
+
+@keyframes moving{
+    from{
+        transform: translateX(-500px);
+        opacity: 0;
+    }   
+    to{
+        transform: translateX(40px);
+        opacity: 1;
+    }
+}
+
+
+h1 {
+    position: relative;
+    bottom: 20px;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.red{
+    color: #ee0101;
+}
+
+.signup-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.signup-text a {
+    color: #ee0101;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Input Fields */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #dddddd;
+    color: #000000;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: #dddddd;
+}
+
+.divider hr {
+    flex: 1;
+    border: none;
+    height: 1px;
+    background: #dddddd;
+}
+
+.divider span {
+    margin: 0 10px;
+    
+}
+
+/* Social Buttons */
+.social-btn {
+    background: #dddddd;
+    color: black;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.social-btn:hover {
+    background-color: #000000;
+    color: #dddddd;
+}
+
+/* Bottom Buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.small-btn {
+    background: #dddddd;
+    color: black;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.small-btn:hover {
+    background: #ee0101;
+    color:#ee0101;
+    
+}
+
+.confirm {
+    background: #dddddd;
+}
+
+.confirm:hover {
+    background: #ee0101;
+    color:#ee0101;
+    
+}

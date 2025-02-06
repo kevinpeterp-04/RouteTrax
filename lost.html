@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Bus Lost & Found</title>
+    <link rel="stylesheet" href="lost.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Back Button Outside the Container -->
+    <a href="home.html" class="back-button">Back</a>
+    <h1>College Bus Lost & Found</h1>
+    <div class="container">
+        
+        <form id="reportForm">
+            <div class="form-group">
+                <label for="itemType">Report Type:</label>
+                <select id="itemType" required>
+                    <option value="lost">Lost Item</option>
+                    <option value="found">Found Item</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="itemName">Item Description:</label>
+                <input type="text" id="itemName" required placeholder="e.g., Airpods">
+            </div>
+
+            <div class="form-group">
+                <label for="dateTime">Date and Time:</label>
+                <input type="datetime-local" id="dateTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="busRoute">Bus Route Number:</label>
+                <input type="text" id="busRoute" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactName">Your Name:</label>
+                <input type="text" id="contactName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Email:</label>
+                <input type="email" id="contactEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactPhone">Phone:</label>
+                <input type="tel" id="contactPhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalInfo">Additional Information:</label>
+                <textarea id="additionalInfo" rows="3"></textarea>
+            </div>
+
+            <button type="submit">Submit Report</button>
+        </form>
+
+        <div id="reports" class="reports-section">
+            <h2>Recent Reports</h2>
+            <div id="reportsList"></div> <!-- This is where the reports will be dynamically added -->
+        </div>
+    </div>
+
+    <script src="lost.js"></script>
+</body>
+</html>
