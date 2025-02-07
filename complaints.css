@@ -6,7 +6,7 @@
 }
 
 body {
-background-color: #121212;;
+    background-color: #121212;
     color: #ffffff;
     background-attachment: fixed;
     overflow-x: hidden;
@@ -59,7 +59,6 @@ background-color: #121212;;
 .main-contentprof {
     padding: 2rem;
     max-width: 1300px;
-    
     margin: 0 auto;
 }
 
@@ -72,8 +71,8 @@ background-color: #121212;;
     text-shadow: 0px 0px 20px #000000;
 }
 
-/* Profile Styles */
-.profile-container, .complaint-container, .admin-container {
+/* Profile & Complaint Container Styles */
+.profile-container, .admin-container {
     background: rgba(0, 0, 0, 0.485);
     backdrop-filter: blur(5px);
     border-radius: 10px;
@@ -82,6 +81,20 @@ background-color: #121212;;
     height: 730px;
 }
 
+/* Complaint Container: Auto Height */
+.complaint-container {
+    background: rgba(0, 0, 0, 0.485);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    height: auto; /* No fixed height */
+    max-width: 700px; /* Adjust width to fit form neatly */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Profile Photo */
 .profile-photo {
     text-align: center;
     margin-bottom: 2rem;
@@ -95,8 +108,9 @@ background-color: #121212;;
     margin-bottom: 1rem;
 }
 
+/* Form Group */
 .form-group {
-    display: grid;;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
     margin-bottom: 1rem;
@@ -116,16 +130,18 @@ textarea {
     resize: vertical;
 }
 
+/* Centered Button Group */
 .button-group {
     display: flex;
+    justify-content: center; /* Center the buttons */
     gap: 1rem;
-    justify-content: center;
     margin-top: 2rem;
 }
 
-/* Complaint History Styles */
+/* Complaint History */
 .complaints-list {
     margin-top: 2rem;
+    text-align: center; /* Center the complaint history title */
 }
 
 .complaint-card {
@@ -174,7 +190,7 @@ th, td {
 }
 
 /* Button Styles */
-.submit-btn, .feature-btn  {
+.submit-btn, .feature-btn {
     background: #b50000;
     color: white;
     border: none;
@@ -184,8 +200,13 @@ th, td {
     transition: all 0.3s ease;
     font-weight: 600;
     box-shadow: 0px 0px 15px #000000;
+    margin-top: 1rem; /* Added spacing */
+    display: block; /* Ensure button takes full width of parent */
+    margin-left: auto;
+    margin-right: auto;
 }
-.upload-btn{
+
+.upload-btn {
     background: #b50000;
     color: white;
     border: none;
@@ -197,13 +218,16 @@ th, td {
     box-shadow: 0px 0px 15px #000000;
     position: relative;
     top: 30px;
+    margin-top: 1rem; /* Added spacing */
 }
 
-.profile-form{
+/* Ensure Profile Form is Properly Positioned */
+.profile-form {
     position: relative;
-    top: 50px;;
+    top: 50px;
 }
 
+/* Button Hover Effect */
 .submit-btn:hover, .feature-btn:hover, .upload-btn:hover {
     background-color: rgba(255, 255, 255, 0);
     animation: myround 1s forwards;
@@ -242,18 +266,16 @@ th, td {
     }
 }
 
-.filter-input{
-background-color: #121212;
+.filter-input {
+    background-color: #121212;
 }
 
-
-
-
+/* Back Button */
 .back-button {
     position: fixed;
     top: 15px;
     left: 15px;
-    width: 40px;
+    width: 50px;
     height: 40px;
     background: #b50000;
     color: white;
@@ -266,7 +288,6 @@ background-color: #121212;
     justify-content: center;
     transition: background-color 0.3s, color 0.3s;
     z-index: 1000;
-    width: 50px;
     border: none;
 }
 
@@ -274,8 +295,8 @@ background-color: #121212;
     background-color: #810000; /* Darker red on hover */
 }
 
-option{
-    background-color: #121212;;
+option {
+    background-color: #121212;
 }
 
 .main-content {
