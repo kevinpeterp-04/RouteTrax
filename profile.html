@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Management</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!--
+    <header class="header">
+        <div class="logo">
+            <img src="https://via.placeholder.com/60" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Profile</a></li>
+                <li><a href="complaints.html">Complaints</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    -->
+
+    <div class="main-content">
+        <h1 class="title">Student Profile</h1>
+        <!--
+        <div class="profile-container">
+            <div class="profile-photo">
+                <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Photo">
+                <input type="file" id="photoUpload" accept="image/*">
+                <label for="photoUpload" class="upload-btn">Upload Photo</label>
+            </div>
+-->
+            <form id="profileForm" class="profile-form">
+                <div class="form-group">
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <input type="text" id="studentId" placeholder="Student ID" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="course" placeholder="Course/Department" required>
+                    <input type="number" id="year" placeholder="Year of Study" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Contact Number" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="address" placeholder="Residential Address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="busRoute" placeholder="Bus Route Number" required>
+                    <input type="text" id="pickupPoint" placeholder="Pick-up Point" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="dropoffPoint" placeholder="Drop-off Point" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Save Changes</button>
+                    <button type="button" class="feature-btn" onclick="generateBusPass()">Generate Bus Pass</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
