@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="https://via.placeholder.com/60" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Profile</a></li>
+                <li><a href="complaints.html">Complaints</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1 class="title">Admin Dashboard</h1>
+        
+        <div class="admin-container">
+            <div class="filters">
+                <input type="date" id="dateFrom" class="filter-input">
+                <input type="date" id="dateTo" class="filter-input">
+                <select id="filterBus" class="filter-input">
+                    <option value="">All Buses</option>
+                    <option value="1">Bus 1</option>
+                    <option value="2">Bus 2</option>
+                    <option value="3">Bus 3</option>
+                </select>
+                <select id="filterStatus" class="filter-input">
+                    <option value="">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="acknowledged">Acknowledged</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Search..." class="filter-input">
+            </div>
+
+            <div class="statistics-dashboard">
+                <div class="stat-card">
+                    <h3>Total Complaints</h3>
+                    <p id="totalComplaints">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p id="pendingComplaints">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Resolved</h3>
+                    <p id="resolvedComplaints">0</p>
+                </div>
+            </div>
+
+            <div class="complaints-table">
+                <table id="complaintsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student</th>
+                            <th>Bus</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="complaintsTableBody">
+                        <!-- Complaints will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Profile Management System</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>
