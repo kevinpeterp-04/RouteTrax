@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: start;
     align-items: center;
-    background: linear-gradient(to right, black,rgba(0, 0, 0, 0.445),rgba(255, 255, 255, 0)),url(elements/redbus60.png);
+    background: linear-gradient(to right, black,rgba(0, 0, 0, 0.445),rgba(255, 255, 255, 0)),url(/static/images/redbus60.png);
     font-family: 'Roboto', sans-serif;
     background-position: center;
     background-repeat: no-repeat;
@@ -199,4 +199,5 @@ h1 {
 .pay-btn:hover {
     background: #ee0101;
     color:#ee0101;
+    
 }

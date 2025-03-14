@@ -6,7 +6,7 @@
   }
   
   body {
-    background-image: url('elements/redbus60.png');
+    background-image: url('/static/images/redbus60.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -19,8 +19,8 @@
   }
   
   @keyframes fadein {
-    from {background-image: url('elements/blackbg.jpg');}
-    to {background-image: url('elements/redbus60.png');}
+    from {background-image: url('/static/images/blackbg.jpg');}
+    to {background-image: url('/static/images/redbus60.png');}
   }
   
   @keyframes mmove {
