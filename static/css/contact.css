@@ -38,7 +38,7 @@ html, body {
 /* Contact section fills exactly the bottom 50% */
 .contact-section {
     height: 80vh;
-    background-image: url(elements/contact_bg.jpg);
+    background-image: url(/static/images/contact_bg.jpg);
     background-position: 0px -450px;
     background-repeat: no-repeat;
     background-size: cover;
