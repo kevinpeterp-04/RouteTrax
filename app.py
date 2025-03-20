@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from datetime import datetime
 import firebase_admin
@@ -61,17 +60,10 @@ def home():
     return render_template('home.html')
 
 # Admin Dashboard
-=======
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8
 @app.route('/admin')
 def admin():
     return render_template('admin.html')
 
-<<<<<<< HEAD
 # Admin Notification Panel
 @app.route('/admin/notifications', methods=['GET', 'POST'])
 def admin_notifications_panel():
@@ -153,16 +145,10 @@ def profile():
     return render_template('profile.html', user=user_data)
 
 # Admin Complaints Route
-=======
-if __name__ == '__main__':
-    app.run(debug=True)
-
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8
 @app.route('/admin/complaints')
 def admin_complaints():
     return render_template('admincomplaint.html')
 
-<<<<<<< HEAD
 # Logout Route
 @app.route('/logout')
 def logout():
@@ -172,8 +158,3 @@ def logout():
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
-=======
-@app.route('/login')
-def login():
-    return render_template('login.html')
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8
