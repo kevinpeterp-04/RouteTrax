@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-    <link rel="stylesheet" href="../static/css/signupnew.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/signupnew.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="login-container">
-        <h1>Create a new account<span class="red">.</span></h1>
-        <p class="signup-text">Already a member? <a href="login2.html">Log in</a></p>
+      <h1>Create a new account<span class="red">.</span></h1>
+      <p class="signup-text">
+        Already a member? <a href="{{ url_for('login') }}">Log in</a>
+      </p>
 
-        <form action="#">
-            <div class="inputgroupcontainer">
-            <div class="input-group1">
-                <label>Enter First Name</label>
-                <input type="text" required>
-            </div>
-            <div class="input-group">
-                <label>Enter Last Name</label>
-                <input type="text" required>
-            </div>
-            </div>
-            <div class="inputgroupcontainer2">
-                <div class="input-group">
-                    <label>Enter Department</label>
-                    <input type="text" required>
-                </div>
-                <div class="input-group">
-                    <label>Enter Semester & Division</label>
-                    <input type="text" required>
-                </div>
-                </div>
+      <form action="{{ url_for('signup') }}" method="POST">
+        <div class="inputgroupcontainer">
+          <div class="input-group1">
+            <label>Enter First Name</label>
+            <input type="text" name="first_name" required />
+          </div>
+          <div class="input-group">
+            <label>Enter Last Name</label>
+            <input type="text" name="last_name" required />
+          </div>
+        </div>
+        <div class="inputgroupcontainer2">
+          <div class="input-group">
+            <label>Enter Department</label>
+            <input type="text" name="department" required />
+          </div>
+          <div class="input-group">
+            <label>Enter Semester & Division</label>
+            <input type="text" name="semester_division" required />
+          </div>
+        </div>
 
-                <label for="phone">Enter Phone number</label>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
-            
-            <label for="email">Enter Email (RSET Email)</label>
-            <input type="email" id="email" required>
+        <label for="phone">Enter Phone number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{10}"
+          required
+        />
 
-            <label for="password">Enter Password</label>
-            <input type="password" id="password" required>
+        <label for="email">Enter Email (RSET Email)</label>
+        <input type="email" id="email" name="email" required />
 
-            <div class="button-group">
-                <button type="button" class="small-btn" onclick="window.location.href='login2.html'">Go Back</button>
-                <button class="small-btn confirm">Confirm</button>
-            </div>
-        </form>
+        <label for="password">Enter Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <div class="button-group">
+          <button
+            type="button"
+            class="small-btn"
+            onclick="window.location.href='{{ url_for('login') }}'"
+          >
+            Go Back
+          </button>
+          <button type="submit" class="small-btn confirm">Confirm</button>
+        </div>
+      </form>
     </div>
-
 
     <div class="divider"></div>
     <div class="content">
-        <h1>Fee Payment<span class="red">.</span></h1>
-        <button class="pay-btn">Pay Now</button>
+      <h1>Fee Payment<span class="red">.</span></h1>
+      <button class="pay-btn">Pay Now</button>
     </div>
-</body>
+  </body>
 </html>

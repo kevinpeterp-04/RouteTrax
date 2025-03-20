@@ -4,29 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROUTETRAX</title>
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="header">
       <div class="logo">
-        <a href="index.html"
-          ><img src="/static/images/Routetrax_white_png.png" alt="Logo"
-        /></a>
+        <a href="{{ url_for('index') }}">
+          <img
+            src="{{ url_for('static', filename='images/Routetrax_white_png.png') }}"
+            alt="Logo"
+          />
+        </a>
       </div>
       <div class="hideOnMobile">
         <nav class="navbar">
           <ul>
-            <li><a href="home.html">HOME</a></li>
-            <li><a href="notif.html">NOTIFICATIONS</a></li>
-            <li><a href="map.html">MAP</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="{{ url_for('home') }}">HOME</a></li>
+            <li><a href="{{ url_for('notif') }}">NOTIFICATIONS</a></li>
+            <li><a href="{{ url_for('map') }}">MAP</a></li>
+            <li><a href="{{ url_for('contact') }}">CONTACT</a></li>
           </ul>
         </nav>
       </div>
       <div class="sidebar">
-        <a class="sidebar-link" onclick="hideSB()"
-          ><svg
+        <a class="sidebar-link" onclick="hideSB()">
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
             viewBox="0 -960 960 960"
@@ -35,11 +44,13 @@
           >
             <path
               d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-            /></svg></a>
-        <a href="home.html" class="sidebar-link">Home</a>
-        <a href="notif.html" class="sidebar-link">Notifications</a>
-        <a href="map.html" class="sidebar-link">Map</a>
-        <a href="contact.html" class="sidebar-link">Contact</a>
+            />
+          </svg>
+        </a>
+        <a href="{{ url_for('home') }}" class="sidebar-link">Home</a>
+        <a href="{{ url_for('notif') }}" class="sidebar-link">Notifications</a>
+        <a href="{{ url_for('map') }}" class="sidebar-link">Map</a>
+        <a href="{{ url_for('contact') }}" class="sidebar-link">Contact</a>
       </div>
 
       <div class="menu">
@@ -81,13 +92,13 @@
       // Function to change color on mouse over
       navbar.addEventListener("mouseover", function () {
         navbar.style.backgroundColor = "rgb(0, 0, 0,0.75)"; // Change to black
-        // Change text color for better visibility
       });
 
       // Function to revert color on mouse out
       navbar.addEventListener("mouseout", function () {
         navbar.style.backgroundColor = originalColor; // Restore original color
       });
+
       function initMap() {
         // Set location (latitude, longitude)
         const collegeLocation = { lat: 12.9716, lng: 77.5946 }; // Example: Bangalore coordinates

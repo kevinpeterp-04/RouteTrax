@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Notification Panel</title>
-    <link rel="stylesheet" href="../static/css/notifadmin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    
-<button class="back-button" onclick="location.href='admin.html'">◀</button>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/notifadmin.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button
+      class="back-button"
+      onclick="location.href='{{ url_for('admin') }}'"
+    >
+      ◀
+    </button>
+
     <div class="container">
-        <h1>Admin Notification Panel</h1>
-        <div class="notification-form">
-            <textarea 
-                id="notificationMessage" 
-                placeholder="Enter notification message..."
-                rows="4"
-            ></textarea>
-            <button id="publishBtn">Publish Notification</button>
-        </div>
-        <div class="notification-history">
-            <h2>Recent Notifications</h2>
-            <ul id="notificationList"></ul>
-        </div>
+      <h1>Admin Notification Panel</h1>
+      <div class="notification-form">
+        <textarea
+          id="notificationMessage"
+          placeholder="Enter notification message..."
+          rows="4"
+        ></textarea>
+        <button id="publishBtn">Publish Notification</button>
+      </div>
+      <div class="notification-history">
+        <h2>Recent Notifications</h2>
+        <ul id="notificationList"></ul>
+      </div>
     </div>
-    <script type="module" src="/static/js/notifadmin.js"></script>
-</body>
+
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/notifadmin.js') }}"
+    ></script>
+  </body>
 </html>
