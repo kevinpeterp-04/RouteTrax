@@ -55,46 +55,108 @@ class LoginForm(FlaskForm):
 def index():
     return render_template('index.html')
 
+# @app.route('/signup', methods=['GET', 'POST'])
+# def signup():
+#     if request.method == 'POST':
+#         try:
+#             email = request.form.get('email')
+#             password = request.form.get('password')
+#             first_name = request.form.get('first_name')
+#             last_name = request.form.get('last_name')
+#             department = request.form.get('department')
+#             semester_division = request.form.get('semester_division')
+#             phone = request.form.get('phone')
+
+#             # 🔹 Check if user already exists
+#             user_ref = db.collection('users').where("email", "==", email).stream()
+#             if any(user_ref):  # Check if stream contains results
+#                 flash("⚠️ Email already registered! Please log in.", 'error')
+#                 return redirect(url_for('login'))
+
+#             # 🔹 Hash password before saving
+#             hashed_password = generate_password_hash(password)
+
+#             user_data = {
+#                 'first_name': first_name,
+#                 'last_name': last_name,
+#                 'department': department,
+#                 'semester_division': semester_division,
+#                 'phone': phone,
+#                 'email': email,
+#                 'password': hashed_password  # ✅ Store hashed password
+#             }
+
+#             # 🔹 Save user to Firestore
+#             db.collection('users').document(email).set(user_data)
+#             print(f"✅ User {email} added successfully to Firestore!")  # Debugging
+
+#             flash('✅ Account created successfully! Please log in.', 'success')
+#             return redirect(url_for('login'))  # Ensure redirection works
+
+#         except Exception as e:
+#             print(f"🔥 Error creating user: {e}")  # Debugging
+#             flash(f'❌ Error creating account: {e}', 'error')
+
+#     return render_template('signupnew.html')
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    form = SignupForm()
-    if form.validate_on_submit():
+    if request.method == 'POST':
         try:
-            email = form.email.data
-            password = form.password.data
-            
-            # Check if user already exists
-            user_ref = db.collection('users').where("email", "==", email).stream()
-            existing_user = next(user_ref, None)
+            email = request.form.get('email')
+            password = request.form.get('password')
+            first_name = request.form.get('first_name')
+            last_name = request.form.get('last_name')
+            department = request.form.get('department')
+            semester_division = request.form.get('semester_division')
+            phone = request.form.get('phone')
 
-            if existing_user:
-                flash("Email already registered! Please log in.", 'error')
+            # 🔹 Check if user already exists in Firestore
+            user_ref = db.collection('users').where("email", "==", email).stream()
+            if any(user_ref):  
+                flash("⚠️ Email already registered! Please log in.", 'error')
                 return redirect(url_for('login'))
 
+            # 🔹 Add user to Firebase Authentication
+            try:
+                user = auth.create_user(
+                    email=email,
+                    password=password,
+                    display_name=f"{first_name} {last_name}",
+                    phone_number=f"+91{phone}" if phone.isdigit() else None
+                )
+                firebase_uid = user.uid  # ✅ Store Firebase UID
+            except Exception as e:
+                print(f"🔥 Error adding user to Firebase Auth: {e}")
+                flash(f"❌ Authentication Error: {e}", 'error')
+                return redirect(url_for('signup'))
+
+            # 🔹 Hash password before saving (for Firestore reference only)
             hashed_password = generate_password_hash(password)
+
             user_data = {
-                'first_name': form.first_name.data,
-                'last_name': form.last_name.data,
-                'department': form.department.data,
-                'semester_division': form.semester_division.data,
-                'phone': form.phone.data,
+                'uid': firebase_uid,  # ✅ Store Firebase UID
+                'first_name': first_name,
+                'last_name': last_name,
+                'department': department,
+                'semester_division': semester_division,
+                'phone': phone,
                 'email': email,
-                'password': hashed_password  # Store hashed password
+                'password': hashed_password  # Stored only for reference
             }
-            
-            # Save user to Firestore
+
+            # 🔹 Save user to Firestore
             db.collection('users').document(email).set(user_data)
-            print(f"✅ User {email} added successfully to Firestore!")  # Debugging
-            
-            flash('Account created successfully! Please log in.', 'success')
-            return redirect(url_for('login'))  # Ensure redirection works
+            print(f"✅ User {email} added to Firestore & Authentication!")  
+
+            flash('✅ Account created successfully! Please log in.', 'success')
+            return redirect(url_for('login'))  
 
         except Exception as e:
-            print(f"🔥 Error creating user: {e}")  # Debugging
-            flash(f'Error creating account: {e}', 'error')
+            print(f"🔥 Error creating user: {e}")  
+            flash(f'❌ Error creating account: {e}', 'error')
 
-    return render_template('signupnew.html', form=form)
-
+    return render_template('signupnew.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
