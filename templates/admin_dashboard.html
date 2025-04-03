@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .dashboard-card {
+        transition: all 0.3s;
+      }
+      .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a
+                  class="nav-link active text-white"
+                  href="{{ url_for('admin_dashboard') }}"
+                >
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-white"
+                  href="{{ url_for('admin_lost_found') }}"
+                >
+                  Lost & Found
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-white"
+                  href="{{ url_for('admin_notices') }}"
+                >
+                  Notices
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-white"
+                  href="{{ url_for('admin_complaints') }}"
+                >
+                  Complaints
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+          <h2>Admin Dashboard</h2>
+
+          <div class="row my-4">
+            <div class="col-md-4">
+              <div class="card dashboard-card bg-primary text-white">
+                <div class="card-body">
+                  <h5 class="card-title">Lost & Found Items</h5>
+                  <h2 class="card-text">{{ lost_found_count }}</h2>
+                  <a
+                    href="{{ url_for('admin_lost_found') }}"
+                    class="btn btn-light"
+                    >Manage</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card dashboard-card bg-success text-white">
+                <div class="card-body">
+                  <h5 class="card-title">Active Notices</h5>
+                  <h2 class="card-text">{{ notices_count }}</h2>
+                  <a href="{{ url_for('admin_notices') }}" class="btn btn-light"
+                    >Manage</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card dashboard-card bg-warning text-dark">
+                <div class="card-body">
+                  <h5 class="card-title">Pending Complaints</h5>
+                  <h2 class="card-text">{{ complaints_count }}</h2>
+                  <a
+                    href="{{ url_for('admin_complaints') }}"
+                    class="btn btn-dark"
+                    >Manage</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

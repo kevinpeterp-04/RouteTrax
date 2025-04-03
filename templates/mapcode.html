@@ -3,52 +3,212 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RouteTrax - Live Bus Tracking</title>
+    <title>ROUTETRAX</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
   </head>
   <body>
-    <div id="map" style="height: 500px; width: 100%"></div>
+    <header class="header">
+      <div class="logo">
+        <a href="{{ url_for('index') }}">
+          <img
+            src="{{ url_for('static', filename='images/Routetrax_white_png.png') }}"
+            alt="Logo"
+          />
+        </a>
+      </div>
+      <div class="hideOnMobile">
+        <nav class="navbar">
+          <ul>
+            <li><a href="{{ url_for('home') }}">HOME</a></li>
+            <li><a href="{{ url_for('notifadmin') }}">NOTIFICATIONS</a></li>
+            <li><a href="{{ url_for('map') }}">MAP</a></li>
+            <li><a href="{{ url_for('contact') }}">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar">
+        <a class="sidebar-link" onclick="hideSB()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e8eaed"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            />
+          </svg>
+        </a>
+        <a href="{{ url_for('home') }}" class="sidebar-link">Home</a>
+        <a href="{{ url_for('notifadmin') }}" class="sidebar-link"
+          >Notifications</a
+        >
+        <a href="{{ url_for('map') }}" class="sidebar-link">Map</a>
+        <a href="{{ url_for('contact') }}" class="sidebar-link">Contact</a>
+      </div>
 
+      <div class="menu">
+        <a onclick="showSB()"><span class="icon">☰</span></a>
+      </div>
+    </header>
+
+    <div class="hero">
+      <label for="busSelect">Select Bus:</label>
+      <select id="busSelect">
+        <option value="">--Choose Bus--</option>
+        <option value="20">Bus 20</option>
+        <option value="21">Bus 21</option>
+        <option value="22">Bus 22</option>
+      </select>
+      <div id="map"></div>
+      <div id="etaPanel" class="eta-panel">
+        <h3>Estimated Arrival Time:</h3>
+        <p id="eta">Select a bus to see ETA</p>
+        <p id="speed">Current Speed: 0 km/h</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 RouteTrax. All Rights Reserved
+        <a href="#">TERMS AND CONDITIONS</a>
+        <a href="#">PRIVACY POLICY</a>
+      </p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-      function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 15,
-          center: { lat: 12.9716, lng: 77.5946 }, // Default location (Change later)
-        });
-
-        const marker = new google.maps.Marker({
-          position: { lat: 12.9716, lng: 77.5946 }, // Default location (Change dynamically)
-          map: map,
-          title: "Bus Location",
-        });
-
-        // Function to update marker position
-        function updateBusLocation(lat, lng) {
-          marker.setPosition({ lat: lat, lng: lng });
-          map.setCenter({ lat: lat, lng: lng });
-        }
-
-        // Fetch bus location from Flask backend every 5 seconds
-        function fetchBusLocation() {
-          fetch("/bus-location")
-            .then((response) => response.json())
-            .then((data) => {
-              updateBusLocation(data.lat, data.lng);
-            })
-            .catch((error) => console.error("Error fetching location:", error));
-        }
-
-        setInterval(fetchBusLocation, 5000); // Refresh every 5 seconds
+      // Sidebar functions
+      function showSB() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.display = "flex";
       }
+
+      function hideSB() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.display = "none";
+      }
+
+      // Navbar hover effect
+      const navbar = document.querySelector(".header");
+      const originalColor = navbar.style.backgroundColor;
+
+      navbar.addEventListener("mouseover", () => {
+        navbar.style.backgroundColor = "rgb(0, 0, 0,0.75)";
+      });
+
+      navbar.addEventListener("mouseout", () => {
+        navbar.style.backgroundColor = originalColor;
+      });
+
+      // Leaflet Map Implementation
+      let map, busMarker, routeLayer, updateInterval;
+
+      function initMap() {
+        map = L.map("map").setView([12.9716, 77.5946], 15);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+          map
+        );
+      }
+
+      function updateBusPosition(busNumber) {
+        fetch(`/bus-location?bus=${busNumber}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.latitude && data.longitude) {
+              if (!busMarker) {
+                busMarker = L.marker([data.latitude, data.longitude], {
+                  icon: L.icon({
+                    iconUrl:
+                      "https://cdn-icons-png.flaticon.com/512/744/744515.png",
+                    iconSize: [32, 32],
+                  }),
+                })
+                  .addTo(map)
+                  .bindPopup(`Bus ${busNumber}`);
+              } else {
+                busMarker.setLatLng([data.latitude, data.longitude]);
+              }
+              map.panTo([data.latitude, data.longitude]);
+            }
+          });
+      }
+
+      function loadRoute(busNumber) {
+        if (routeLayer) map.removeLayer(routeLayer);
+
+        fetch(`/get-bus-route?bus=${busNumber}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.route) {
+              const routeCoords = data.route.map((p) => [
+                p.latitude,
+                p.longitude,
+              ]);
+              routeLayer = L.polyline(routeCoords, { color: "blue" }).addTo(
+                map
+              );
+              map.fitBounds(routeLayer.getBounds());
+            }
+          });
+      }
+
+      // Initialize map when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        initMap();
+
+        document
+          .getElementById("busSelect")
+          .addEventListener("change", function () {
+            const busNumber = this.value;
+            if (busNumber) {
+              if (updateInterval) clearInterval(updateInterval);
+              if (busMarker) map.removeLayer(busMarker);
+
+              loadRoute(busNumber);
+              updateBusPosition(busNumber);
+              updateInterval = setInterval(
+                () => updateBusPosition(busNumber),
+                5000
+              );
+            }
+          });
+      });
     </script>
 
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"
-    ></script>
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .eta-panel {
+        position: absolute;
+        top: 100px;
+        right: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+      }
+      #busSelect {
+        padding: 8px;
+        margin: 10px 0;
+        width: 200px;
+      }
+    </style>
   </body>
 </html>
