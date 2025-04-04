@@ -78,35 +78,51 @@ def signup():
             email = form.email.data
             password = form.password.data
             
-            # Check if user already exists
-            user_ref = firestore_db.collection('users').where("email", "==", email).stream()
-            existing_user = next(user_ref, None)
-
-            if existing_user:
+            # Check if user already exists in Firebase Auth
+            try:
+                auth.get_user_by_email(email)
                 flash("Email already registered! Please log in.", 'error')
                 return redirect(url_for('login'))
+            except auth.UserNotFoundError:
+                pass  # User doesn't exist, continue registration
 
-            hashed_password = generate_password_hash(password)
+            # Create Firebase Auth user
+            user = auth.create_user(
+                email=email,
+                password=password,
+                display_name=f"{form.first_name.data} {form.last_name.data}"
+            )
+
+            # Store additional data in Firestore
             user_data = {
+                'uid': user.uid,
                 'first_name': form.first_name.data,
                 'last_name': form.last_name.data,
                 'department': form.department.data,
                 'semester_division': form.semester_division.data,
                 'phone': form.phone.data,
                 'email': email,
-                'password': hashed_password  # Store hashed password
+                'created_at': datetime.utcnow().isoformat()
             }
             
-            # Save user to Firestore
-            firestore_db.collection('users').document(email).set(user_data)
-            print(f"✅ User {email} added successfully to Firestore!")  # Debugging
+            # Save to Firestore
+            firestore_db.collection('users').document(user.uid).set(user_data)
             
-            flash('Account created successfully! Please log in.', 'success')
-            return redirect(url_for('login'))
+            # Automatically log in user
+            session['user'] = {
+                'uid': user.uid,
+                'email': user.email,
+                'name': user.display_name
+            }
+            
+            flash('Account created successfully!', 'success')
+            return redirect(url_for('home'))
 
+        except auth.EmailAlreadyExistsError:
+            flash("Email already registered! Please log in.", 'error')
         except Exception as e:
-            print(f"🔥 Error creating user: {e}")  # Debugging
-            flash(f'Error creating account: {e}', 'error')
+            print(f"Error: {str(e)}")
+            flash(f'Error creating account: {str(e)}', 'error')
 
     return render_template('signupnew.html', form=form)
 
