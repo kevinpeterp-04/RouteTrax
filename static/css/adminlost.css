@@ -1,0 +1,40 @@
+/* Admin Specific Styles */
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.delete-btn {
+  background: #b50000;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background: #810000;
+}
+
+.report-type {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.report-details {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+.report-details p {
+  margin: 8px 0;
+}
+
+.report-details span {
+  color: #e0e0e0;
+}

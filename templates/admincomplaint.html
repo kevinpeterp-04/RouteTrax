@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
+    <title>Complaint Admin Dashboard</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/profile.css') }}"
@@ -13,6 +12,54 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <style>
+      /* Additional Admin-specific Styles */
+      .status-pending {
+        color: #ff9800;
+      }
+      .status-acknowledged {
+        color: #2196f3;
+      }
+      .status-resolved {
+        color: #4caf50;
+      }
+
+      .complaints-table {
+        margin-top: 20px;
+        background: #1e1e1e;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #333;
+      }
+
+      th {
+        background-color: #b50000;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #2c2c2c;
+      }
+
+      .status-select {
+        background: #333;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 4px;
+      }
+    </style>
   </head>
   <body>
     <button
@@ -21,33 +68,51 @@
     >
       ◀
     </button>
+
     <div class="main-content">
-      <h1 class="title">Admin Dashboard</h1>
+      <h1 class="title">Complaint Management Dashboard</h1>
 
       <div class="admin-container">
+        <!-- Filters Section -->
         <div class="filters">
-          <input type="date" id="dateFrom" class="filter-input" />
-          <input type="date" id="dateTo" class="filter-input" />
-          <select id="filterBus" class="filter-input">
-            <option value="">All Buses</option>
-            <option value="1">Bus 1</option>
-            <option value="2">Bus 2</option>
-            <option value="3">Bus 3</option>
-          </select>
-          <select id="filterStatus" class="filter-input">
-            <option value="">All Status</option>
-            <option value="pending">Pending</option>
-            <option value="acknowledged">Acknowledged</option>
-            <option value="resolved">Resolved</option>
-          </select>
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search..."
-            class="filter-input"
-          />
+          <div class="filter-group">
+            <input
+              type="date"
+              id="dateFrom"
+              class="filter-input"
+              aria-label="Filter from date"
+            />
+            <input
+              type="date"
+              id="dateTo"
+              class="filter-input"
+              aria-label="Filter to date"
+            />
+            <select id="filterBus" class="filter-input">
+              <option value="">All Buses</option>
+              <option value="20">Bus 20</option>
+              <option value="21">Bus 21</option>
+              <option value="22">Bus 22</option>
+              <option value="23">Bus 23</option>
+            </select>
+            <select id="filterStatus" class="filter-input">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Acknowledged">Acknowledged</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+          <div class="search-group">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search complaints..."
+              class="filter-input"
+            />
+          </div>
         </div>
 
+        <!-- Statistics Cards -->
         <div class="statistics-dashboard">
           <div class="stat-card">
             <h3>Total Complaints</h3>
@@ -63,6 +128,7 @@
           </div>
         </div>
 
+        <!-- Complaints Table -->
         <div class="complaints-table">
           <table id="complaintsTable">
             <thead>
@@ -71,113 +137,37 @@
                 <th>Student</th>
                 <th>Bus</th>
                 <th>Category</th>
-                <th>Date</th>
+                <th>Date Reported</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody id="complaintsTableBody">
-              <!-- Complaints will be dynamically added here -->
+              <!-- Dynamic content will be inserted here -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <footer>
-      <p>&copy; 2024 Student Profile Management System</p>
-    </footer>
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyAYeyrhjBlujXAY58k5hZXo5j9fa_h5bmM",
+        authDomain: "routetrax-5e817.firebaseapp.com",
+        databaseURL: "https://routetrax-5e817-default-rtdb.firebaseio.com",
+        projectId: "routetrax-5e817",
+        storageBucket: "routetrax-5e817.firebasestorage.app",
+        messagingSenderId: "891824394529",
+        appId: "1:891824394529:web:b4c6ee464b895b91946e60",
+      };
+    </script>
 
-    <script src="{{ url_for('static', filename='js/admincomplaint.js') }}"></script>
+    <!-- Admin Complaint Script -->
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/admincomplaint.js') }}"
+    ></script>
   </body>
 </html>
-=======
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../static/css/profile.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <!--
-    <header class="header">
-        <div class="logo">
-            <img src="https://via.placeholder.com/60" alt="Logo">
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Profile</a></li>
-                <li><a href="complaints.html">Complaints</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
--->
-<button class="back-button" onclick="location.href='admin.html'">◀</button>
-    <div class="main-content">
-        <h1 class="title">Admin Dashboard</h1>
-        
-        <div class="admin-container">
-            <div class="filters">
-                <input type="date" id="dateFrom" class="filter-input">
-                <input type="date" id="dateTo" class="filter-input">
-                <select id="filterBus" class="filter-input">
-                    <option value="">All Buses</option>
-                    <option value="1">Bus 1</option>
-                    <option value="2">Bus 2</option>
-                    <option value="3">Bus 3</option>
-                </select>
-                <select id="filterStatus" class="filter-input">
-                    <option value="">All Status</option>
-                    <option value="pending">Pending</option>
-                    <option value="acknowledged">Acknowledged</option>
-                    <option value="resolved">Resolved</option>
-                </select>
-                <input type="text" id="searchInput" placeholder="Search..." class="filter-input">
-            </div>
-
-            <div class="statistics-dashboard">
-                <div class="stat-card">
-                    <h3>Total Complaints</h3>
-                    <p id="totalComplaints">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Pending</h3>
-                    <p id="pendingComplaints">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Resolved</h3>
-                    <p id="resolvedComplaints">0</p>
-                </div>
-            </div>
-
-            <div class="complaints-table">
-                <table id="complaintsTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Student</th>
-                            <th>Bus</th>
-                            <th>Category</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="complaintsTableBody">
-                        <!-- Complaints will be dynamically added here -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Student Profile Management System</p>
-    </footer>
-
-    <script src="/static/js/admincomplaint.js"></script>
-</body>
-</html>
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8

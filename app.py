@@ -8,11 +8,16 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms.validators import DataRequired, Length, Email, EqualTo
+from flask import Flask, render_template, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+
 
 # Load environment variables
 load_dotenv(dotenv_path='db.env')
 
-# Firebase Configuration from .env
+# Firebase Configuration
 firebase_config = {
     "type": "service_account",
     "project_id": os.getenv("FIREBASE_PROJECT_ID"),
@@ -26,7 +31,7 @@ firebase_config = {
     "client_x509_cert_url": os.getenv("FIREBASE_CLIENT_X509_CERT_URL"),
 }
 
-# Initialize Firebase for Firestore and Realtime Database
+# Initialize Firebase
 cred = credentials.Certificate(firebase_config)
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://routetrax-5e817-default-rtdb.firebaseio.com/'  # Replace with your database URL
@@ -38,6 +43,11 @@ realtime_db = db.reference()  # Realtime Database
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "your_default_secret_key")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///complaints.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
 
 # CSRF protection and form validation
 class SignupForm(FlaskForm):
@@ -100,18 +110,30 @@ def signup():
 
     return render_template('signupnew.html', form=form)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
         try:
-            user = auth.get_user_by_email(form.email.data)
-            session['user'] = {'email': form.email.data, 'uid': user.uid}
-            flash('Login successful!', 'success')
-            return redirect(url_for('home'))
+            user_ref = firestore_db.collection('users').document(form.email.data).get()
+
+            if user_ref.exists:
+                user_data = user_ref.to_dict()
+                if check_password_hash(user_data['password'], form.password.data):
+                    session['user'] = {'email': user_data['email']}
+                    flash('Login successful!', 'success')
+                    return redirect(url_for('home'))
+                else:
+                    flash('Invalid password. Try again.', 'error')
+            else:
+                flash('User not found. Sign up first.', 'error')
+
         except Exception as e:
-            flash('Invalid credentials. Try again.', 'error')
+            flash('Login error. Try again.', 'error')
+
     return render_template('login2.html', form=form)
+
 
 @app.route('/home')
 def home():
@@ -120,6 +142,22 @@ def home():
 @app.route('/notifadmin')
 def notifadmin():
     return render_template('notifadmin.html')
+
+@app.route('/notif')
+def notif():
+    return render_template('notif.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+@app.route('/adminlost')
+def adminlost():
+    return render_template('adminlost.html')
+
+@app.route('/admincomplaint')
+def admincomplaint():
+    return render_template('admincomplaint.html')
 
 @app.route('/map')
 def map():
@@ -148,13 +186,108 @@ def contact():
 def lost():
     return render_template('lost.html')
 
-@app.route('/admincomplaint')
-def admincomplaint():
-    return render_template('admincomplaint.html')
+@app.route('/submit_report', methods=['POST'])
+def submit_report():
+    try:
+        data = request.json
+
+        required_fields = ['type', 'itemName', 'dateTime', 'busRoute', 'contactName', 'contactEmail', 'contactPhone']
+        if not all(field in data for field in required_fields):
+            return jsonify({"error": "Missing required fields"}), 400
+
+        report_data = {
+            "type": data['type'],
+            "itemName": data['itemName'],
+            "dateTime": data['dateTime'],
+            "busRoute": data['busRoute'],
+            "contactName": data['contactName'],
+            "contactEmail": data['contactEmail'],
+            "contactPhone": data['contactPhone'],
+            "additionalInfo": data.get('additionalInfo', ''),
+            "timestamp": datetime.utcnow().isoformat()  # Fixed datetime issue
+        }
+
+        firestore_db.collection("lost_found").add(report_data)  # Fixed Firestore reference
+
+        return jsonify({"message": "Report submitted successfully!"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/get_reports', methods=['GET'])
+def get_reports():
+    try:
+        reports = firestore_db.collection("lost_found").order_by("timestamp", direction=firestore.Query.DESCENDING).stream()
+        
+        reports_list = []
+        for report in reports:
+            report_data = report.to_dict()
+            report_data["id"] = report.id
+            reports_list.append(report_data)
+
+        return jsonify(reports_list), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# Complaint Model
+@app.route('/complaints')  # Change this from '/complaints_page'
+def complaints():  # Rename the function to match
+    return render_template('complaints.html')
+
+
+@app.route('/submit_complaint', methods=['POST'])
+def submit_complaint():
+    try:
+        # Force JSON parsing even if wrong Content-Type
+        data = request.get_json(force=True)  # ← Add force=True for debugging
+        
+        if not data:
+            return jsonify({"error": "No data received"}), 400
+        # Rest of your code...
+        complaint_data = {
+            "busNumber": data.get("busNumber", ""),
+            "category": data.get("category", ""),
+            "description": data.get("description", ""),
+            "timestamp": datetime.utcnow().isoformat()
+        }
+
+        # Push to Firebase Realtime Database
+        new_complaint_ref = realtime_db.child('complaints').push(complaint_data)
+        
+        return jsonify({
+            "message": "Complaint submitted successfully",
+            "id": new_complaint_ref.key
+        }), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/get_complaints', methods=['GET'])
+def get_complaints():
+    try:
+        complaints_ref = realtime_db.child('complaints')
+        snapshot = complaints_ref.get()
+        
+        complaints_list = []
+        if snapshot:
+            for key, value in snapshot.items():
+                complaint = value
+                complaint["id"] = key
+                complaints_list.append(complaint)
+        
+        # Sort by timestamp descending
+        complaints_list.sort(key=lambda x: x['timestamp'], reverse=True)
+        
+        return jsonify(complaints_list), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

@@ -1,61 +1,71 @@
-// Complaints Page JavaScript
-document.addEventListener('DOMContentLoaded', () => {
-    const complaintForm = document.getElementById('complaintForm');
-    const complaintsList = document.getElementById('complaintsList');
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // Handle complaint submission
-    complaintForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const complaint = {
-            id: Date.now(),
-            busNumber: document.getElementById('busNumber').value,
-            category: document.getElementById('category').value,
-            description: document.getElementById('description').value,
-            date: new Date().toISOString(),
-            status: 'Pending'
-        };
+const firebaseConfig = {
+  apiKey: "AIzaSyAYeyrhjBlujXAY58k5hZXo5j9fa_h5bmM",
+  authDomain: "routetrax-5e817.firebaseapp.com",
+  databaseURL: "https://routetrax-5e817-default-rtdb.firebaseio.com",
+  projectId: "routetrax-5e817",
+  storageBucket: "routetrax-5e817.firebasestorage.app",
+  messagingSenderId: "891824394529",
+  appId: "1:891824394529:web:b4c6ee464b895b91946e60",
+};
 
-        // Save complaint
-        const complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
-        complaints.push(complaint);
-        localStorage.setItem('complaints', JSON.stringify(complaints));
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const complaintsRef = ref(database, "complaints");
 
-        // Reset form and update display
-        complaintForm.reset();
-        displayComplaints();
-        alert('Complaint submitted successfully!');
+document.addEventListener("DOMContentLoaded", () => {
+  const complaintForm = document.getElementById("complaintForm");
+  const complaintsList = document.getElementById("complaintsList");
+
+  // Real-time listener for complaints
+  onValue(complaintsRef, (snapshot) => {
+    complaintsList.innerHTML = "";
+    snapshot.forEach((childSnapshot) => {
+      const complaint = childSnapshot.val();
+      complaintsList.appendChild(
+        createComplaintCard(childSnapshot.key, complaint)
+      );
     });
+  });
 
-    // Display complaints
-    function displayComplaints() {
-        const complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
-        complaintsList.innerHTML = complaints
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map(complaint => `
-                <div class="complaint-card">
-                    <h3>Bus ${complaint.busNumber} - ${complaint.category}</h3>
-                    <p>${complaint.description}</p>
-                    <p><small>Submitted: ${new Date(complaint.date).toLocaleString()}</small></p>
-                    <p><strong>Status: ${complaint.status}</strong></p>
-                    <button onclick="deleteComplaint(${complaint.id})" class="feature-btn">
-                        Delete
-                    </button>
-                </div>
-            `).join('');
+  // Form submission handler
+  complaintForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const complaintData = {
+      busNumber: document.getElementById("busNumber").value.trim(),
+      category: document.getElementById("category").value.trim(),
+      description: document.getElementById("description").value.trim(),
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      await push(complaintsRef, complaintData);
+      complaintForm.reset();
+    } catch (error) {
+      console.error("Error submitting complaint:", error);
+      alert("Failed to submit complaint. Please try again.");
     }
+  });
 
-    // Initial display
-    displayComplaints();
+  function createComplaintCard(complaintId, complaint) {
+    const card = document.createElement("div");
+    card.className = "complaint-item";
+    card.innerHTML = `
+            <p><strong>Bus:</strong> ${complaint.busNumber}</p>
+            <p><strong>Category:</strong> ${complaint.category}</p>
+            <p><strong>Description:</strong> ${complaint.description}</p>
+            <small>Submitted: ${new Date(
+              complaint.timestamp
+            ).toLocaleString()}</small>
+        `;
+    return card;
+  }
 });
-
-// Delete complaint
-function deleteComplaint(id) {
-    if (confirm('Are you sure you want to delete this complaint?')) {
-        const complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
-        const updatedComplaints = complaints.filter(c => c.id !== id);
-        localStorage.setItem('complaints', JSON.stringify(updatedComplaints));
-        document.getElementById('complaintsList').innerHTML = '';
-        displayComplaints();
-    }
-}

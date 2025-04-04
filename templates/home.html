@@ -65,7 +65,7 @@
     </header>
 
     <main class="main-content">
-      <h1 class="title">Welcome, User1!</h1>
+      <h1 class="title">Welcome</h1>
 
       <p class="subtitle">
         Track your college bus in real-time with ease – ensuring safety, <br />
@@ -81,7 +81,7 @@
         </button>
         <button
           type="button"
-          onclick="window.location.href='{{ url_for('notifadmin') }}';"
+          onclick="window.location.href='{{ url_for('notif') }}';"
           class="login-btn"
         >
           Notice
@@ -117,8 +117,9 @@
             Submit and track complaints about bus services. We value your
             feedback.
           </p>
+
           <button
-            onclick="window.location.href='{{ url_for('admincomplaint') }}';"
+            onclick="window.location.href='{{ url_for('complaints') }}'"
             class="feature-btn"
           >
             Register Complaint

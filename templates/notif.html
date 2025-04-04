@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification Manager</title>
+    <title>Notification Center</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/notif.css') }}"
@@ -33,40 +32,13 @@
       <div id="notifications" class="notifications-container">
         <!-- Notifications will be inserted here -->
       </div>
-=======
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification Manager</title>
-    <link rel="stylesheet" href="../static/css/notif.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <button class="back-button" onclick="location.href='home.html'">◀</button>
-
-    <div class="container">
-        <header>
-            <h1>Notification Center</h1>
-        </header>
-
-        <div class="filters">
-            <button id="showAll" class="filter-btn active">All</button>
-            <button id="showFavorites" class="filter-btn">Favorites</button>
-            <button id="showReminders" class="filter-btn">Reminders</button>
-        </div>
-
-        <div id="notifications" class="notifications-container">
-            <!-- Notifications will be inserted here -->
-        </div>
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8
     </div>
 
-    <!-- Template for notification -->
+    <!-- Notification Template -->
     <template id="notification-template">
-<<<<<<< HEAD
       <div class="notification-card">
         <div class="notification-header">
-          <h3 class="notification-title"></h3>
+          <h3 class="notification-title">Announcement</h3>
           <span class="notification-date"></span>
         </div>
         <p class="notification-message"></p>
@@ -88,40 +60,10 @@
       </div>
     </template>
 
+    <!-- Firebase SDK -->
     <script
-      src="{{ url_for('static', filename='js/notif.js') }}"
       type="module"
+      src="{{ url_for('static', filename='js/notif.js') }}"
     ></script>
   </body>
 </html>
-=======
-        <div class="notification-card">
-            <div class="notification-header">
-                <h3 class="notification-title"></h3>
-                <span class="notification-date"></span>
-            </div>
-            <p class="notification-message"></p>
-            <div class="notification-actions">
-                <button class="action-btn favorite-btn">
-                    <span class="star-icon">☆</span>
-                </button>
-                <button class="action-btn reminder-btn">
-                    Set Reminder
-                </button>
-                <div class="reminder-input hidden">
-                    <input type="datetime-local" class="datetime-picker">
-                    <button class="save-reminder-btn">Save</button>
-                    <button class="cancel-reminder-btn">Cancel</button>
-                </div>
-                <span class="reminder-text hidden"></span>
-                <button class="action-btn remove-reminder-btn hidden">
-                    Remove Reminder
-                </button>
-            </div>
-        </div>
-    </template>
-
-    <script src="/static/js/notif.js" type="module"></script>
-</body>
-</html>
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,39 +37,26 @@
       </div>
     </div>
 
+    <!-- Add Firebase SDKs -->
+    <script type="module">
+      // Add your Firebase configuration here
+      const firebaseConfig = {
+        apiKey: "{{ FIREBASE_API_KEY }}",
+        authDomain: "{{ FIREBASE_AUTH_DOMAIN }}",
+        databaseURL: "{{ FIREBASE_DATABASE_URL }}",
+        projectId: "{{ FIREBASE_PROJECT_ID }}",
+        storageBucket: "{{ FIREBASE_STORAGE_BUCKET }}",
+        messagingSenderId: "{{ FIREBASE_SENDER_ID }}",
+        appId: "{{ FIREBASE_APP_ID }}",
+      };
+
+      // Make config available globally
+      window.firebaseConfig = firebaseConfig;
+    </script>
+
     <script
       type="module"
       src="{{ url_for('static', filename='js/notifadmin.js') }}"
     ></script>
   </body>
 </html>
-=======
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Notification Panel</title>
-    <link rel="stylesheet" href="../static/css/notifadmin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    
-<button class="back-button" onclick="location.href='admin.html'">◀</button>
-    <div class="container">
-        <h1>Admin Notification Panel</h1>
-        <div class="notification-form">
-            <textarea 
-                id="notificationMessage" 
-                placeholder="Enter notification message..."
-                rows="4"
-            ></textarea>
-            <button id="publishBtn">Publish Notification</button>
-        </div>
-        <div class="notification-history">
-            <h2>Recent Notifications</h2>
-            <ul id="notificationList"></ul>
-        </div>
-    </div>
-    <script type="module" src="/static/js/notifadmin.js"></script>
-</body>
-</html>
->>>>>>> 96d7133ba643c42339caf480a2e12f5316ac4df8

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Lost & Found</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/lost.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Back Button -->
+    <button
+      class="back-button"
+      onclick="location.href='{{ url_for('admin') }}'"
+    >
+      ◀
+    </button>
+
+    <div class="container">
+      <h1>Lost & Found Admin Panel</h1>
+
+      <div class="reports-section">
+        <h2>All Reports</h2>
+        <div id="adminReportsList"></div>
+      </div>
+    </div>
+
+    <!-- Report Template -->
+    <template id="admin-report-template">
+      <div class="report-card">
+        <div class="report-header">
+          <h3 class="report-type"></h3>
+          <button class="delete-btn">mark as done</button>
+        </div>
+        <div class="report-details">
+          <p><strong>Item:</strong> <span class="item-name"></span></p>
+          <p><strong>Date:</strong> <span class="report-date"></span></p>
+          <p><strong>Bus Route:</strong> <span class="bus-route"></span></p>
+          <p><strong>Contact:</strong> <span class="contact-info"></span></p>
+          <p>
+            <strong>Additional Info:</strong>
+            <span class="additional-info"></span>
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/lostadmin.js') }}"
+    ></script>
+  </body>
+</html>
