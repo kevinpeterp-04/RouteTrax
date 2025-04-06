@@ -166,7 +166,7 @@ def map():
 @app.route('/bus-location')
 def bus_location():
     try:
-        bus_number = "20"  # You can make this dynamic
+        bus_number = "22"  # You can make this dynamic
         ref = realtime_db.child(f'buses/{bus_number}/location')  # Corrected Realtime Database query
         data = ref.get()
 
